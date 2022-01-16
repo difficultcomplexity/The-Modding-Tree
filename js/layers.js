@@ -19,7 +19,16 @@ addLayer("w", {
             description: "Transcend your grams into a buffed grams.",
             cost: new Decimal(5),
             effect() {
-                return player.points.add(1).pow(0.175)
+                return player.points.add(1.1).pow(0.225)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        14: {
+            title: "Transcendious! (WIP)",
+            description: "Transcend your grams into a more buffed grams.",
+            cost: new Decimal(10),
+            effect() {
+                return player.points.add(1.05).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         }
