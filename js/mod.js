@@ -20,7 +20,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01.4g</h3><br>
 		- Added 5 Weight Buffs.<br>
-		- Balanced up to 1 Tonne.`
+		- Balanced up to 1 Overweight.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -47,6 +47,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 12)) gain = gain.times(upgradeEffect('w', 12))
 	if (hasUpgrade('w', 13)) gain = gain.times(upgradeEffect('w', 13))
 	if (hasUpgrade('w', 14)) gain = gain.times(upgradeEffect('w', 14))
+	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
 	return gain
 }
 
