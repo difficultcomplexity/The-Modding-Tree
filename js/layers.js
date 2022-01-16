@@ -9,6 +9,7 @@ addLayer("w", {
             title: "Heavier Weights!",
             description: "Multiplies your grams by weights; each weights is 1 more heavier.",
             cost: new Decimal(2),
+            unlocked() { return hasUpgrade("w", 13) },
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -18,6 +19,7 @@ addLayer("w", {
             title: "Prestigious!",
             description: "Transcend your grams into a buffed grams.",
             cost: new Decimal(5),
+            unlocked() { return hasUpgrade("w", 14) },
             effect() {
                 return player.points.add(1.1).pow(0.22)
             },
@@ -27,6 +29,7 @@ addLayer("w", {
             title: "Transcendious!",
             description: "Transcend your grams into a more buffed grams.",
             cost: new Decimal(10),
+            unlocked() { return hasUpgrade("w", 15) },
             effect() {
                 return player.points.add(1.05).pow(0.2)
             },
@@ -49,7 +52,7 @@ addLayer("w", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#9BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "weights", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
