@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1g",
-	name: "Weights",
+	num: "0.0.1.3g",
+	name: "Weight Gym",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.1g</h3><br>
-		- Added 2 Weight Buffs.<br>
-		- Balanced up to 1000 G.`
+	<h3>v0.0.1.3g</h3><br>
+		- Added 4 Weight Buffs.<br>
+		- Balanced up to 100 kG.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
