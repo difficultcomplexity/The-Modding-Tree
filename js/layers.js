@@ -4,6 +4,7 @@ addLayer("w", {
             title: "Speed Up!",
             description: "Doubles your grams.",
             cost: new Decimal(1),
+            unlocked() { return hasUpgrade("w", 13) },
         },
         12: {
             title: "Heavier Weights!",
