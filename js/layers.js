@@ -4,13 +4,12 @@ addLayer("w", {
             title: "Speed Up!",
             description: "Doubles your grams.",
             cost: new Decimal(1),
-            unlocked() { return hasUpgrade("w", 13) },
         },
         12: {
             title: "Heavier Weights!",
             description: "Multiplies your grams by weights; each weights is 1 more heavier.",
             cost: new Decimal(2),
-            unlocked() { return hasUpgrade("w", 13) },
+            unlocked() { return hasUpgrade("w", 11) },
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -20,7 +19,7 @@ addLayer("w", {
             title: "Prestigious!",
             description: "Transcend your grams into a buffed grams.",
             cost: new Decimal(5),
-            unlocked() { return hasUpgrade("w", 14) },
+            unlocked() { return hasUpgrade("w", 12) },
             effect() {
                 return player.points.add(1.1).pow(0.22)
             },
@@ -30,7 +29,7 @@ addLayer("w", {
             title: "Transcendious!",
             description: "Transcend your grams into a more buffed grams.",
             cost: new Decimal(10),
-            unlocked() { return hasUpgrade("w", 15) },
+            unlocked() { return hasUpgrade("w", 13) },
             effect() {
                 return player.points.add(1.05).pow(0.2)
             },
