@@ -4,6 +4,11 @@ addLayer("w", {
             title: "Speed Up!",
             description: "Doubles your grams.",
             cost: new Decimal(1),
+        },
+        12: {
+            title: "Speed Up!",
+            description: "Doubles your grams.",
+            cost: new Decimal(2),
         }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
