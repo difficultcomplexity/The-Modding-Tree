@@ -15,16 +15,16 @@ addLayer("w", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         13: {
-            title: "Prestigious! (WIP)",
+            title: "Prestigious!",
             description: "Transcend your grams into a buffed grams.",
             cost: new Decimal(5),
             effect() {
-                return player.points.add(1.1).pow(0.225)
+                return player.points.add(1.1).pow(0.22)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         14: {
-            title: "Transcendious! (WIP)",
+            title: "Transcendious!",
             description: "Transcend your grams into a more buffed grams.",
             cost: new Decimal(10),
             effect() {
@@ -33,9 +33,9 @@ addLayer("w", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         15: {
-            title: "Upgrade of Upgrades! (WIP)",
+            title: "Upgrade of Upgrades!",
             description: "Upgrades boosts Grams by 1.5x each.",
-            cost: new Decimal(1e300),
+            cost: new Decimal(50),
             effect() {
                 return Decimal.pow(1.5, player.w.upgrades.length)
             },
