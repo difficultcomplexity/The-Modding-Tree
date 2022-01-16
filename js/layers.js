@@ -15,7 +15,7 @@ addLayer("w", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         13: {
-            title: "Prestigious!",
+            title: "Prestigious! (WIP)",
             description: "Transcend your grams into a buffed grams.",
             cost: new Decimal(5),
             effect() {
