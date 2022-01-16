@@ -37,7 +37,7 @@ addLayer("w", {
             description: "Upgrades boosts Grams by 1.5x each.",
             cost: new Decimal(1e300),
             effect() {
-                return player.points.add(1.05).pow(0.2)
+                return Decimal.pow(1.5, player.w.upgrades.length)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         }
