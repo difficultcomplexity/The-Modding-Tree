@@ -31,6 +31,15 @@ addLayer("w", {
                 return player.points.add(1.05).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        15: {
+            title: "Upgrade of Upgrades! (WIP)",
+            description: "Upgrades boosts Grams by 1.5x each.",
+            cost: new Decimal(1e300),
+            effect() {
+                return player.points.add(1.05).pow(0.2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
