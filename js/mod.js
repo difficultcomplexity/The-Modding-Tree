@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "The g Tree",
+	name: "The Weight Tree",
 	id: "mymod",
-	author: "g",
+	author: "DifficultComplexity",
 	pointsName: "g",
 	modFiles: ["layers.js", "tree.js"],
 
@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0g",
-	name: "g",
+	num: "0.0.1g",
+	name: "Weights",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
