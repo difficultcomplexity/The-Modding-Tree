@@ -1,10 +1,10 @@
 addLayer("w", {
     upgrades: {
         11: {
-            title: "Make this whatever you want!",
-            description: "Double your point gain.",
+            title: "Speed Up!",
+            description: "Doubles your grams.",
             cost: new Decimal(1),
-         }
+        }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "w", // This appears on the layer's node. Default is the id with the first letter capitalized
