@@ -6,8 +6,8 @@ addLayer("w", {
             cost: new Decimal(1),
         },
         12: {
-            title: "Speed Up!",
-            description: "Doubles your grams.",
+            title: "Heavier Weights!",
+            description: "Multiplies your grams by weights; each weights is 1 more heavier.",
             cost: new Decimal(2),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
