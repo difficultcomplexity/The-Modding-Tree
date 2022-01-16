@@ -13,6 +13,14 @@ addLayer("w", {
                 return player[this.layer].points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        13: {
+            title: "Prestigious!",
+            description: "Transcend your grams into a buffed grams.",
+            cost: new Decimal(5),
+            effect() {
+                return player.points.add(1).pow(0.175)
+            },
         }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
