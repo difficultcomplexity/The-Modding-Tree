@@ -1,6 +1,6 @@
 let modInfo = {
 	name: "The Weight Tree",
-	id: "mymod",
+	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
 	modFiles: ["layers.js", "tree.js", "overweight.js"],
