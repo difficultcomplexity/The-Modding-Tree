@@ -3,7 +3,7 @@ let modInfo = {
 	id: "mymod",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "tree.js", "overweight.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -61,7 +61,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("e9"))
 }
 
 
