@@ -43,6 +43,13 @@ addLayer("w", {
                 return Decimal.pow(1.5, player.w.upgrades.length)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        21: {
+            title: "Master of Weights!",
+            description: "Not implemented... give me ideas!",
+            cost: new Decimal(1e4),
+            unlocked() { return hasUpgrade("o", 12) },
+            doReset() { const keep = [] }
         }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -61,7 +68,8 @@ addLayer("w", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('o', 11)) gain = gain.times(upgradeEffect('o', 11))
+        if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
+        if (hasUpgrade('o', 13)) mult = mult.times(upgradeEffect('o', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

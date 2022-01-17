@@ -1,13 +1,34 @@
 addLayer("o", {
     upgrades: {
         11: {
-            title: "Boosted! (WIP)",
+            title: "Boosted!",
             description: "Grams increase Weight gain by ^0.1.",
             cost: new Decimal(1),
             effect() {
-                return player.points.add(1.1).pow(0.22)
+                return player.points.add(1.1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        12: {
+            title: "New sales!",
+            description: "Unlock new Weight Upgrades.",
+            cost: new Decimal(3),
+        },
+        13: {
+            title: "Weight+!",
+            description: "Weights boost itself at reduced rate.",
+            cost: new Decimal(4),
+            unlocked() { return hasUpgrade("o", 12) },
+            effect() {
+                return player.w.points.add(1).pow(0.265)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        21: {
+            title: "Heavier than Mountain Everest!",
+            description: "Unlock Comparison Layer.",
+            cost: new Decimal(8),
+            unlocked() { return hasUpgrade("o", 15) },
         }
     },
     name: "overweight",
@@ -22,8 +43,8 @@ addLayer("o", {
     resource: "overweights",
     baseResource: "points",
     baseAmount() {return player.points},
-    type: "normal",
-    exponent: 0.5,
+    type: "static",
+    exponent: 1.45,
     gainMult() {
         mult = new Decimal(1)
         return mult

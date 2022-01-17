@@ -13,14 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.01.4g",
-	name: "Weight Gym",
+	num: "0.01.9g",
+	name: "Too Much Grams",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01.4g</h3><br>
 		- Added 5 Weight Buffs.<br>
 		- Balanced up to 1 Overweight.`
+	
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -61,7 +62,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e9"))
+	return player.points.gte(new Decimal("e11"))
 }
 
 
