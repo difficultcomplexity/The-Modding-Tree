@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.01.9g",
-	name: "Too Much Grams",
+	num: "0.02g | Early Access 1",
+	name: "Too Much Grams (WIP 0.02)",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -44,11 +44,13 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (hasUpgrade('w', 11)) gain = gain.times(2)
+	if (hasUpgrade('w', 11)) gain = gain.times(2) // Weight Upgrades
 	if (hasUpgrade('w', 12)) gain = gain.times(upgradeEffect('w', 12))
 	if (hasUpgrade('w', 13)) gain = gain.times(upgradeEffect('w', 13))
 	if (hasUpgrade('w', 14)) gain = gain.times(upgradeEffect('w', 14))
 	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
+	if (hasUpgrade('w', 21)) gain = gain.times(5)
+	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12)) // Overweight Upgrades
 	return gain
 }
 
@@ -76,7 +78,7 @@ var backgroundStyle = {
 
 // You can change this if you have things that can be messed up by long tick lengths
 function maxTickLength() {
-	return(3600) // Default is 1 hour which is just arbitrarily large
+	return(900) // Default is 1 hour which is just arbitrarily large
 }
 
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,

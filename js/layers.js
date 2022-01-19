@@ -46,10 +46,10 @@ addLayer("w", {
         },
         21: {
             title: "Master of Weights!",
-            description: "Not implemented... give me ideas!",
-            cost: new Decimal(1e4),
+            description: "Quintuple grams!",
+            cost: new Decimal(1e6),
             unlocked() { return hasUpgrade("o", 12) },
-            doReset() { const keep = [] }
+            
         }
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -69,7 +69,6 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
-        if (hasUpgrade('o', 13)) mult = mult.times(upgradeEffect('o', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

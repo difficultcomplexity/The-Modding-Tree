@@ -10,11 +10,17 @@ addLayer("o", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         12: {
+            title: "Raging In!",
+            description: "Gain multi based on overweights. (2^x)",
+            cost: new Decimal(2),
+            effect() { return new Decimal(2).pow(player.o.points) },
+        },
+        13: {
             title: "New sales!",
             description: "Unlock new Weight Upgrades.",
             cost: new Decimal(3),
         },
-        13: {
+        14: {
             title: "Weight+!",
             description: "Weights boost itself at reduced rate.",
             cost: new Decimal(4),
@@ -27,7 +33,7 @@ addLayer("o", {
         21: {
             title: "Heavier than Mountain Everest!",
             description: "Unlock Comparison Layer.",
-            cost: new Decimal(8),
+            cost: new Decimal(10),
             unlocked() { return hasUpgrade("o", 15) },
         }
     },
