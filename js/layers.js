@@ -46,8 +46,8 @@ addLayer("w", {
         },
         21: {
             title: "Master of Weights!",
-            description: "Quintuple grams!",
-            cost: new Decimal(1e6),
+            description: "Quintuple grams! (Free Reward)",
+            cost: new Decimal(1),
             unlocked() { return hasUpgrade("o", 12) },
             
         }
