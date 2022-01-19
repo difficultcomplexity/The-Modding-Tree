@@ -13,11 +13,13 @@ addLayer("o", {
             title: "Raging In!",
             description: "Gain multi based on overweights. (2^x)",
             cost: new Decimal(2),
+            unlocked() { return hasUpgrade("o", 11) },
             effect() { return new Decimal(2).pow(player.o.points) },
         },
         13: {
             title: "New sales!",
             description: "Unlock new Weight Upgrades.",
+            unlocked() { return hasUpgrade("o", 11) },
             cost: new Decimal(3),
         },
         14: {
@@ -29,6 +31,12 @@ addLayer("o", {
                 return player.w.points.add(1).pow(0.265)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        15: {
+            title: "Tantrum!",
+            description: "Throw a tantrum and gain 10x more grams at first minute (Currently: gain 10x more grams).",
+            cost: new Decimal(4),
+            unlocked() { return hasUpgrade("o", 14) },
         },
         21: {
             title: "Heavier than Mountain Everest!",
@@ -50,7 +58,7 @@ addLayer("o", {
     baseResource: "points",
     baseAmount() {return player.points},
     type: "static",
-    exponent: 1.45,
+    exponent: 1.76,
     gainMult() {
         mult = new Decimal(1)
         return mult

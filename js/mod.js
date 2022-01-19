@@ -13,7 +13,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.02g | Early Access 1",
+	num: "0.02g | Early Access 2",
 	name: "Too Much Grams (WIP 0.02)",
 }
 
