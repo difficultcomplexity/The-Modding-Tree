@@ -73,6 +73,7 @@ addLayer("o", {
     exponent: 1.76,
     gainMult() {
         mult = new Decimal(1)
+        
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

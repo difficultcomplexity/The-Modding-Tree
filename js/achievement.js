@@ -44,8 +44,12 @@ addLayer("a", {
         },
         24: {
             name: "Compare?",
-            tooltip: "Compare with yourself.",
-            done() { return player.c.points.gte(1) }
+            tooltip: "Compare with yourself. Reward: Weight gain is increased significally.",
+            done() { return player.c.points.gte(1) },
+            effect() {
+                return player[this.layer].points.add(1.5).pow(0.2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         25: {
             name: "Earth",
@@ -64,7 +68,7 @@ addLayer("a", {
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(0),
+		points: new Decimal(2),
     }},
     color: "#BB44DD",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -82,7 +86,7 @@ addLayer("a", {
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "a", description: "A: Dont press", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "Achievement", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 })

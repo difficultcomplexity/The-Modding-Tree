@@ -11,7 +11,7 @@ addLayer("w", {
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("w", 11) },
             effect() {
-                return player[this.layer].points.add(1).pow(0.45)
+                return player[this.layer].points.add(1.5).pow(0.45)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -49,7 +49,26 @@ addLayer("w", {
             description: "Quintuple grams! (Free Reward)",
             cost: new Decimal(1),
             unlocked() { return hasUpgrade("o", 12) },
-            
+        },
+        22: {
+            title: "Softcapped...",
+            description: "Buff Weight+ by ^0.1.",
+            cost: new Decimal(1e10),
+            unlocked() { return hasUpgrade("w", 21) },
+            effect() {
+                return player.w.points.add(1).pow(0.09)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        23: {
+            title: "Ascendious!",
+            description: "Transcend your grams into a ascended grams.",
+            cost: new Decimal(1e15),
+            unlocked() { return hasUpgrade("w", 22) },
+            effect() {
+                return player.points.add(1.0).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
     },
     milestones: {
@@ -81,6 +100,8 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
+        if (hasUpgrade('w', 22)) mult = mult.times(upgradeEffect('w', 22))
+        if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

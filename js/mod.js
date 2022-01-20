@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.02g",
-	name: "Comparisons between Mountain Everest",
+	num: "0.03g",
+	name: "We Dont Need to Compare",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -50,6 +50,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 14)) gain = gain.times(upgradeEffect('w', 14))
 	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
 	if (hasUpgrade('w', 21)) gain = gain.times(5)
+	if (hasUpgrade('w', 24)) gain = gain.times(upgradeEffect('w', 24))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12)) // Overweight Upgrades
 	return gain
 }
