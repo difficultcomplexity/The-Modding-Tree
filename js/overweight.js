@@ -45,6 +45,18 @@ addLayer("o", {
             unlocked() { return hasUpgrade("o", 15) },
         }
     },
+    milestones: {
+        1: {
+            requirementDescription: "1 Overweights",
+            effectDescription: "You gain 5% of Weight on reset per second.",
+            done() { return player.o.points.gte(1) }
+        },
+        2: {
+            requirementDescription: "4 Overweights",
+            effectDescription: "You can autobuy Weight Upgrades.",
+            done() { return player.o.points.gte(4) }
+        }
+    },
     name: "overweight",
     symbol: "O",
     position: 1,

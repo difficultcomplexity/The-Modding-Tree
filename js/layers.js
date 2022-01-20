@@ -37,10 +37,10 @@ addLayer("w", {
         },
         15: {
             title: "Upgrade of Upgrades!",
-            description: "Upgrades boosts Grams by 1.5x each.",
+            description: "Upgrades boosts Grams by 1.7x each.",
             cost: new Decimal(50),
             effect() {
-                return Decimal.pow(1.5, player.w.upgrades.length)
+                return Decimal.pow(1.7, player.w.upgrades.length)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -51,6 +51,18 @@ addLayer("w", {
             unlocked() { return hasUpgrade("o", 12) },
             
         }
+    },
+    milestones: {
+        1: {
+            requirementDescription: "1,000,000 Weights",
+            effectDescription: "Quintuple your grams.",
+            done() { return player.w.points.gte(1e6) }
+        },
+        2: {
+            requirementDescription: "1e15 Weights",
+            effectDescription: "Keep W Upgrades.",
+            done() { return player.w.points.gte(1e15) }
+        },
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "w", // This appears on the layer's node. Default is the id with the first letter capitalized

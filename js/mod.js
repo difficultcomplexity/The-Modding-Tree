@@ -3,7 +3,7 @@ let modInfo = {
 	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js", "overweight.js"],
+	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
 
 	discordName: "",
 	discordLink: "",
@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.02g | Early Access 2",
-	name: "Too Much Grams (WIP 0.02)",
+	num: "0.02g",
+	name: "Comparisons between Mountain Everest",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -64,7 +64,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e11"))
+	return player.points.gte(new Decimal(6e27))
 }
 
 
