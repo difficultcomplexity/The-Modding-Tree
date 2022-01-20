@@ -75,6 +75,13 @@ addLayer("c", {
             rewardDescription: "You are worthy, now. Completing this will grant you time travelling.",
             canComplete: function() {return player.points.gte(1e50)},
         },
+        41: {
+            name: "The Shattered Universe",
+            challengeDescription: "Upgrade W12,13,14,15 and O11,14,15 is NOT boosting your grams.",
+            goalDescription: "Googol Grams",
+            rewardDescription: "You are worthy, now. Completing this will grant you time travelling.",
+            canComplete: function() {return player.points.gte(1e100)},
+        },
     },
     name: "comparison", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized

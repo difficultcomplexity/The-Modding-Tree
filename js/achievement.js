@@ -44,12 +44,8 @@ addLayer("a", {
         },
         24: {
             name: "Compare?",
-            tooltip: "Compare with yourself. Reward: Weight gain is increased significally.",
+            tooltip: "Compare with yourself.",
             done() { return player.c.points.gte(1) },
-            effect() {
-                return player[this.layer].points.add(1.5).pow(0.2)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         25: {
             name: "Earth",
@@ -61,6 +57,21 @@ addLayer("a", {
             name: "Compressed",
             tooltip: "Get 1e18 Weights.",
             done() { return player.w.points.gte(1e18) }
+        },
+        32: {
+            name: "Hollow Mountain",
+            tooltip: "Beat Mountaintop Challenge.",
+            done() { return player.w.points.gte(1e30) }
+        },
+        33: {
+            name: "Triangle",
+            tooltip: "Beat Mountain Evertop Challenge.",
+            done() { return player.w.points.gte(1e30) }
+        },
+        34: {
+            name: "Kirby, NO!!!",
+            tooltip: "Get 1 Mountain worth of grams in the Shattered Challenge.",
+            done() { return player.w.points.gte(1e30) }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
