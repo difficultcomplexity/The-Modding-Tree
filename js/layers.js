@@ -57,10 +57,14 @@ addLayer("w", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         21: {
-            title: "Master of Weights!",
-            description: "Quintuple grams! (Free Reward)",
-            cost: new Decimal(1),
+            title: "Singularity!",
+            description: "Gain more weights... by grams?",
+            cost: new Decimal(1e6),
             unlocked() { return hasUpgrade("o", 12) },
+            effect() {
+                return player.points.add(1).pow(0.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         22: {
             title: "Softcapped...",
