@@ -3,7 +3,7 @@ let modInfo = {
 	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
+	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
 
 	discordName: "",
 	discordLink: "",
@@ -13,7 +13,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03.5g",
+	num: "0.03.75g",
 	name: "Comparisons... COMPARE!",
 }
 
@@ -54,6 +54,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 23)) gain = gain.times(upgradeEffect('w', 23))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades
+	if (hasUpgrade('u', 11)) gain = gain.times(upgradeEffect('u', 11))
 	return gain
 }
 

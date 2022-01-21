@@ -58,14 +58,19 @@ addLayer("o", {
     },
     milestones: {
         1: {
-            requirementDescription: "1 Overweights",
-            effectDescription: "You gain 5% of Weight on reset per second.",
-            done() { return player.o.points.gte(1) }
+            requirementDescription: "2 Overweights",
+            effectDescription: "You gain 1% of Weight on reset per second.",
+            done() { return player.o.points.gte(2) }
         },
         2: {
             requirementDescription: "4 Overweights",
             effectDescription: "You can autobuy Weight Upgrades.",
             done() { return player.o.points.gte(4) }
+        },
+        3: {
+            requirementDescription: "10 Overweights",
+            effectDescription: "Keep W Upgrades.",
+            done() { return player.o.points.gte(10) }
         }
     },
     name: "overweight",

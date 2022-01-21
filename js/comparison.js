@@ -13,7 +13,7 @@ addLayer("c", {
         },
         3: {
             requirementDescription: "1,000 Comparisons",
-            effectDescription: "Unlock Earth Challenge.",
+            effectDescription: "Unlock Earth Challenge, keep O milestones.",
             done() { return player.c.points.gte(1000) }
         },
         4: {
@@ -28,12 +28,12 @@ addLayer("c", {
         },
         6: {
             requirementDescription: "1e9 Comparisons",
-            effectDescription: "Unlock Universe Challenge.",
+            effectDescription: "Unlock Universe Challenge, you can buy max Overweights.",
             done() { return player.c.points.gte(1e9) }
         },
         7: {
             requirementDescription: "1e12 Comparisons",
-            effectDescription: "Unlock 2 Challenges.",
+            effectDescription: "Unlock Shattered Challenge.",
             done() { return player.c.points.gte(1e12) }
         }
     },
@@ -62,7 +62,7 @@ addLayer("c", {
             name: "Mountaintop: Volcanic",
             challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.6.",
             goalDescription: "2e16 Grams",
-            rewardDescription: "Comparisons increase weight gain by ^0.4.",
+            
             canComplete: function() {return player.points.gte(2.393e16)},
             unlocked() { return (hasMilestone('c', 1)) },
             
@@ -71,7 +71,7 @@ addLayer("c", {
             name: "Mountain Evertop",
             challengeDescription: "Upgrade W13,14 is nerfed and reduce gram gain to ^0.75.",
             goalDescription: "5e21 Grams",
-            rewardDescription: "You get more grams based on formula: (log5(Comparisons^2)^2)x.",
+            
             canComplete: function() {return player.points.gte(4.7533e21)},
             unlocked() { return (hasMilestone('c', 2)) },
         },
@@ -79,7 +79,7 @@ addLayer("c", {
             name: "Moon",
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
             goalDescription: "5e27 Grams",
-            rewardDescription: "Unlock 2 new upgrades.",
+            
             canComplete: function() {return player.points.gte(5.33e27)},
             unlocked() { return (hasMilestone('c', 3)) },
         },
@@ -87,7 +87,7 @@ addLayer("c", {
             name: "Betelgeuse",
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
             goalDescription: "4e33 Grams",
-            rewardDescription: "Unlock a buyable.",
+            
             canComplete: function() {return player.points.gte(4.33e33)},
             unlocked() { return (hasMilestone('c', 4)) },
         },
@@ -95,7 +95,7 @@ addLayer("c", {
             name: "Choco Way",
             challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.5",
             goalDescription: "5e47 Grams",
-            rewardDescription: "Unlock another buyable.",
+            
             canComplete: function() {return player.points.gte(5.6e47)},
             unlocked() { return (hasMilestone('c', 5)) },
         },

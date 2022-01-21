@@ -11,7 +11,7 @@ addLayer("w", {
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("w", 11) },
             effect() {
-                let effect = player.points.add(1.5).pow(0.4)
+                let effect = player.points.add(1.5).pow(0.333)
                 if (inChallenge("c", 11)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
                 if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.1)
@@ -25,7 +25,7 @@ addLayer("w", {
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("w", 12) },
             effect() {
-                let effect = player.points.add(1.1).pow(0.185)
+                let effect = player.points.add(1.1).pow(0.175)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
                 return effect
@@ -89,14 +89,9 @@ addLayer("w", {
     },
     milestones: {
         1: {
-            requirementDescription: "1,000,000 Weights",
-            effectDescription: "Quintuple your grams.",
-            done() { return player.w.points.gte(1e6) }
-        },
-        2: {
-            requirementDescription: "1e15 Weights",
-            effectDescription: "Keep W Upgrades.",
-            done() { return player.w.points.gte(1e15) }
+            requirementDescription: "1e308 Weights",
+            effectDescription: "Get ???.",
+            done() { return player.w.points.gte(1e308) }
         },
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -119,6 +114,7 @@ addLayer("w", {
         if (hasUpgrade('w', 21)) mult = mult.times(upgradeEffect('w', 21))
         if (hasUpgrade('w', 22)) mult = mult.times(upgradeEffect('w', 22))
         if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
+        if (hasUpgrade('u', 11)) mult = mult.times(upgradeEffect('u', 11))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
         return mult
     },

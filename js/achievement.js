@@ -78,6 +78,11 @@ addLayer("a", {
             tooltip: "X91MC W31GH UNI5.",
             done() { return player.points.gte(1.5e56) }
         },
+        41: {
+            name: "The TRUE Universe.",
+            tooltip: "Reset universally..",
+            done() { return player.u.points.gte(1) }
+        },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
