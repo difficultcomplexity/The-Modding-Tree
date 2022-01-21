@@ -61,17 +61,22 @@ addLayer("a", {
         32: {
             name: "Hollow Mountain",
             tooltip: "Beat Mountaintop Challenge.",
-            done() { return player.w.points.gte(1e30) }
+            done() { return (hasChallenge('c', 11)) },
         },
         33: {
             name: "Triangle",
             tooltip: "Beat Mountain Evertop Challenge.",
-            done() { return player.w.points.gte(1e30) }
+            done() { return (hasChallenge('c', 12)) },
         },
         34: {
             name: "Kirby, NO!!!",
             tooltip: "Get 1 Mountain worth of grams in the Shattered Challenge.",
-            done() { return player.w.points.gte(1e30) }
+            done() { return player.points.gte(1e15) }
+        },
+        35: {
+            name: "The Universe.",
+            tooltip: "X91MC W31GH UNI5.",
+            done() { return player.points.gte(1.5e56) }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.

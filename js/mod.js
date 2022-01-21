@@ -13,14 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03.2g | Pre-release 1",
-	name: "We Dont Need to Compare",
+	num: "0.03.5g",
+	name: "Comparisons... COMPARE!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01.4g</h3><br>
 		- Added 5 Weight Buffs.<br>
-		- Balanced up to 1 Overweight.`
+		- Balanced up to 1 Overweight.<br>
+		- Note from the creator: Im sorry, this changelog is outdated because i dont know how do i change it...`
 	
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
@@ -51,7 +52,8 @@ function getPointGen() {
 	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
 	if (hasUpgrade('w', 21)) gain = gain.times(5)
 	if (hasUpgrade('w', 23)) gain = gain.times(upgradeEffect('w', 23))
-	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12)) // Overweight Upgrades
+	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
+	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades
 	return gain
 }
 

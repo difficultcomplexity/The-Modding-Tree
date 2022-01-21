@@ -11,7 +11,11 @@ addLayer("w", {
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("w", 11) },
             effect() {
-                return player[this.layer].points.add(1.5).pow(0.45)
+                let effect = player.points.add(1.5).pow(0.4)
+                if (inChallenge("c", 11)) effect = player.points.add(1.5).pow(0.2)
+                if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
+                if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -21,7 +25,10 @@ addLayer("w", {
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("w", 12) },
             effect() {
-                return player.points.add(1.1).pow(0.22)
+                let effect = player.points.add(1.1).pow(0.185)
+                if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
+                if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -31,7 +38,10 @@ addLayer("w", {
             cost: new Decimal(10),
             unlocked() { return hasUpgrade("w", 13) },
             effect() {
-                return player.points.add(1.05).pow(0.2)
+                let effect = player.points.add(1.05).pow(0.175)
+                if (inChallenge("c", 12)) effect = new Decimal(10)
+                if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.15)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -40,7 +50,9 @@ addLayer("w", {
             description: "Upgrades boosts Grams by 1.7x each.",
             cost: new Decimal(50),
             effect() {
-                return Decimal.pow(1.7, player.w.upgrades.length)
+                let effect = Decimal.pow(1.7, player.w.upgrades.length)
+                if (inChallenge("c", 32)) effect = Decimal.pow(2.5, player.w.upgrades.length)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -56,17 +68,17 @@ addLayer("w", {
             cost: new Decimal(1e10),
             unlocked() { return hasUpgrade("w", 21) },
             effect() {
-                return player.w.points.add(1).pow(0.09)
+                return player.w.points.add(1).pow(0.085)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         23: {
             title: "Ascendious!",
             description: "Transcend your grams into a ascended grams.",
-            cost: new Decimal(1e15),
+            cost: new Decimal(5e14),
             unlocked() { return hasUpgrade("w", 22) },
             effect() {
-                return player.points.add(1.0).pow(0.15)
+                return player.points.add(1.0).pow(0.115)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
@@ -101,6 +113,7 @@ addLayer("w", {
         mult = new Decimal(1)
         if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
         if (hasUpgrade('w', 22)) mult = mult.times(upgradeEffect('w', 22))
+        if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
         return mult
     },

@@ -37,10 +37,30 @@ addLayer("c", {
             done() { return player.c.points.gte(1000) }
         }
     },
+    upgrades: {
+        11: {
+            title: "Compare the Earth with Mars!",
+            description: "Get 1.25x more Weight per each Overweight.",
+            cost: new Decimal(100),
+            effect() {
+                return Decimal.pow(1.25, player.o.points)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        12: {
+            title: "Comparisons... COMPARE!",
+            description: "Get ((????)^1.1)x amount of grams.",
+            cost: new Decimal(10000),
+            effect() {
+                return player.c.points.mul(0.001).pow(1.1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
     challenges: {
         11: {
             name: "Mountaintop: Volcanic",
-            challengeDescription: "Upgrade W12 is useless and reduce gram gain to ^0.6.",
+            challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.6.",
             goalDescription: "1e15 Grams",
             rewardDescription: "Comparisons increase weight gain by ^0.4.",
             canComplete: function() {return player.points.gte(1e15)},
@@ -49,7 +69,7 @@ addLayer("c", {
         },
         12: {
             name: "Mountain Evertop",
-            challengeDescription: "Upgrade W13,14 is useless and reduce gram gain to ^0.75.",
+            challengeDescription: "Upgrade W13,14 is nerfed and reduce gram gain to ^0.75.",
             goalDescription: "1e20 Grams",
             rewardDescription: "You get more grams based on formula: (log5(Comparisons^2)^2)x.",
             canComplete: function() {return player.points.gte(1e20)},
@@ -57,7 +77,7 @@ addLayer("c", {
         },
         21: {
             name: "Moon",
-            challengeDescription: "Upgrade O11 and W12 is useless and divide gram gain by 1e6.",
+            challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
             goalDescription: "1e25 Grams",
             rewardDescription: "Unlock 2 new upgrades.",
             canComplete: function() {return player.points.gte(1e25)},
@@ -65,7 +85,7 @@ addLayer("c", {
         },
         22: {
             name: "Betelgeuse",
-            challengeDescription: "Upgrade O11,12,14 is useless and reduce gram gain to ^0.8.",
+            challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
             goalDescription: "1e30 Grams",
             rewardDescription: "Unlock a buyable.",
             canComplete: function() {return player.points.gte(1e30)},
@@ -73,23 +93,23 @@ addLayer("c", {
         },
         31: {
             name: "Choco Way",
-            challengeDescription: "Upgrade W12 is useless and reduce gram gain to ^0.5",
-            goalDescription: "1e40 Grams",
+            challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.5",
+            goalDescription: "1e45 Grams",
             rewardDescription: "Unlock another buyable.",
-            canComplete: function() {return player.points.gte(1e40)},
+            canComplete: function() {return player.points.gte(1e45)},
             unlocked() { return (hasMilestone('c', 5)) },
         },
         32: {
             name: "The Edge",
-            challengeDescription: "Upgrade W13,14,15 is useless.",
-            goalDescription: "1e50 Grams",
+            challengeDescription: "Upgrade W13,14,15 is nerfed.",
+            goalDescription: "1e65 Grams",
             rewardDescription: "You are worthy, now. Completing this will grant you a new layer.",
-            canComplete: function() {return player.points.gte(1e50)},
+            canComplete: function() {return player.points.gte(1e65)},
             unlocked() { return (hasMilestone('c', 6)) },
         },
         41: {
             name: "The Shattered Universe",
-            challengeDescription: "Upgrade W12,13,14,15 and O15 is useless and reduce gram gain to ^0.1",
+            challengeDescription: "Upgrade W12,13,14,15 and O15 is nerfed significally and reduce gram gain to ^0.1",
             goalDescription: "Googol Grams",
             rewardDescription: "You are worthy, now. Completing this will grant you time travelling.",
             canComplete: function() {return player.points.gte(1e100)},

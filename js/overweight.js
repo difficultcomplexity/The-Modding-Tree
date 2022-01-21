@@ -1,3 +1,4 @@
+// Copy a line here - return player.w.points.add(1).pow(0.265)
 addLayer("o", {
     upgrades: {
         11: {
@@ -5,7 +6,10 @@ addLayer("o", {
             description: "Grams increase Weight gain by ^0.1.",
             cost: new Decimal(1),
             effect() {
-                return player.points.add(1.1).pow(0.1)
+                let effect = player.points.add(1.1).pow(0.1)
+                if (inChallenge("c", 21)) effect = player.points.add(1.1).pow(0.05)
+                if (inChallenge("c", 22)) effect = player.points.add(1.1).pow(0.075)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -14,7 +18,12 @@ addLayer("o", {
             description: "Gain multi based on overweights. (2^x)",
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("o", 11) },
-            effect() { return new Decimal(2).pow(player.o.points) },
+            
+            effect() {
+                let effect = new Decimal(2).pow(player.o.points)
+                if (inChallenge("c", 22)) effect = new Decimal(32)
+                return effect
+            },
         },
         13: {
             title: "New sales!",
@@ -28,7 +37,9 @@ addLayer("o", {
             cost: new Decimal(4),
             unlocked() { return hasUpgrade("o", 12) },
             effect() {
-                return player.w.points.add(1).pow(0.265)
+                let effect = player.w.points.add(1).pow(0.265)
+                if (inChallenge("c", 22)) effect = new Decimal(10)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
