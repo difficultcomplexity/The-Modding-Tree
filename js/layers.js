@@ -116,6 +116,7 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
+        if (hasUpgrade('w', 21)) mult = mult.times(upgradeEffect('w', 21))
         if (hasUpgrade('w', 22)) mult = mult.times(upgradeEffect('w', 22))
         if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
