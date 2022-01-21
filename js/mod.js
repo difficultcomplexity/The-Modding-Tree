@@ -13,7 +13,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03g",
+	num: "0.03.2g | Pre-release 1",
 	name: "We Dont Need to Compare",
 }
 
@@ -50,7 +50,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 14)) gain = gain.times(upgradeEffect('w', 14))
 	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
 	if (hasUpgrade('w', 21)) gain = gain.times(5)
-	if (hasUpgrade('w', 24)) gain = gain.times(upgradeEffect('w', 24))
+	if (hasUpgrade('w', 23)) gain = gain.times(upgradeEffect('w', 23))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12)) // Overweight Upgrades
 	return gain
 }
