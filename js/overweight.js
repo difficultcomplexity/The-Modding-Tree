@@ -37,7 +37,7 @@ addLayer("o", {
             cost: new Decimal(4),
             unlocked() { return hasUpgrade("o", 12) },
             effect() {
-                let effect = player.w.points.add(1).pow(0.265)
+                let effect = player.w.points.add(1).pow(0.175)
                 if (inChallenge("c", 22)) effect = new Decimal(10)
                 return effect
             },
@@ -65,13 +65,17 @@ addLayer("o", {
         2: {
             requirementDescription: "4 Overweights",
             effectDescription: "You can autobuy Weight Upgrades.",
-            done() { return player.o.points.gte(4) }
+            done() { return player.o.points.gte(4) },
+            toggles: [["w", "auto"]],
         },
         3: {
             requirementDescription: "10 Overweights",
             effectDescription: "Keep W Upgrades.",
             done() { return player.o.points.gte(10) }
         }
+    },
+    autoUpgrade() {
+        return hasMilestone("u", 1)
     },
     name: "overweight",
     symbol: "O",
@@ -87,7 +91,7 @@ addLayer("o", {
     baseResource: "points",
     baseAmount() {return player.points},
     type: "static",
-    exponent: 1.76,
+    exponent: 1.8,
     gainMult() {
         mult = new Decimal(1)
         

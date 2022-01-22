@@ -92,15 +92,21 @@ addLayer("a", {
         },
         43: {
             name: "The Answer to Everything",
-            tooltip: "Get the 5th Universal Upgrade.",
+            tooltip: "Get 4.2e42 Comparisons.",
             image: "https://cdn.discordapp.com/attachments/762072132296769586/934394485427798016/question42.png",
-            done() { return (hasUpgrade('u', 15)) }
+            done() { return player.c.points.gte(4.2e42) }
         },
         44: {
             name: "Centillion",
             tooltip: "Get to 100-illion number..",
             image: "https://cdn.discordapp.com/attachments/762072132296769586/934414192465838080/Centillion.png",
             done() { return player.points.gte("e303") }
+        },
+        45: {
+            name: "Iron Stars",
+            tooltip: "Get to 500-illion number..",
+            image: "https://cdn.discordapp.com/attachments/762072132296769586/934472135957696602/ironstar.png",
+            done() { return player.points.gte("e1500") }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.

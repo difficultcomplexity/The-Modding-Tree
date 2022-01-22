@@ -9,48 +9,19 @@ addLayer("u", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
-        12: {
-            title: "What...!",
-            description: "^1.05 to gram gain.",
-            cost: new Decimal(10),
-            unlocked() { return hasUpgrade("u", 11) },
-        },
-        13: {
-            title: "You...!",
-            description: "^1.1 to weight gain.",
-            cost: new Decimal(50),
-            unlocked() { return hasUpgrade("u", 12) },
-        },
-        14: {
-            title: "Have...!",
-            description: "x1.1 to overweight gain.",
-            cost: new Decimal(200),
-            unlocked() { return hasUpgrade("u", 13) },
-        },
-        15: {
-            title: "DONE!?",
-            description: "^1.05 to comparison gain.",
-            cost: new Decimal(1000),
-            unlocked() { return hasUpgrade("u", 14) },
-        },
-        21: {
-            title: "...",
-            description: "Unlock buyables.",
-            cost: new Decimal(1e100),
-            unlocked() { return hasUpgrade("u", 15) },
-
-        },
     },
     milestones: {
         1: {
             requirementDescription: "10 Universes",
             effectDescription: "Keep C upgrades and W milestones and autobuy O upgrades.",
-            done() { return player.u.points.gte(10) }
+            done() { return player.u.points.gte(10) },
+            toggles: [["o", "auto"]],
         },
         2: {
             requirementDescription: "100 Universes",
             effectDescription: "Autobuy C upgrades and gain 0.01% of comparison on reset per second.",
-            done() { return player.u.points.gte(50) }
+            done() { return player.u.points.gte(100) },
+            toggles: [["c", "auto"]],
         },
         3: {
             requirementDescription: "500 Universes",

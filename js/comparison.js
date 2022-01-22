@@ -54,10 +54,10 @@ addLayer("c", {
         },
         12: {
             title: "Comparisons... COMPARE!",
-            description: "Get ((????)^1.25)x amount of grams.",
+            description: "Get ((????)^1.2)x amount of grams.",
             cost: new Decimal(10000),
             effect() {
-                return player.c.points.mul(0.001).pow(1.25)
+                return player.c.points.mul(0.001).pow(1.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -66,7 +66,7 @@ addLayer("c", {
         11: {
             name: "Mountaintop: Volcanic",
             challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.5.",
-            goalDescription: "2e16 Grams",
+            goalDescription: "3e15 Grams",
             rewardDescription: "None!",
             canComplete: function() {return player.points.gte(2.5e16)},
             unlocked() { return (hasMilestone('c', 1)) },
@@ -75,7 +75,7 @@ addLayer("c", {
         12: {
             name: "Mountain Evertop",
             challengeDescription: "Upgrade W13,14 is nerfed and reduce gram gain to ^0.75.",
-            goalDescription: "5e21 Grams",
+            goalDescription: "2e20 Grams",
             rewardDescription: "None!",
             canComplete: function() {return player.points.gte(5e21)},
             unlocked() { return (hasMilestone('c', 2)) },
@@ -83,7 +83,7 @@ addLayer("c", {
         21: {
             name: "Moon",
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
-            goalDescription: "2e28 Grams",
+            goalDescription: "6e26 Grams",
             rewardDescription: "None!",
             canComplete: function() {return player.points.gte(2e28)},
             unlocked() { return (hasMilestone('c', 3)) },
@@ -91,7 +91,7 @@ addLayer("c", {
         22: {
             name: "Betelgeuse",
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
-            goalDescription: "5e33 Grams",
+            goalDescription: "3e31 Grams",
             rewardDescription: "None!",
             canComplete: function() {return player.points.gte(5e33)},
             unlocked() { return (hasMilestone('c', 4)) },
@@ -99,7 +99,7 @@ addLayer("c", {
         31: {
             name: "Choco Way",
             challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.5",
-            goalDescription: "1e48 Grams",
+            goalDescription: "1e45 Grams",
             rewardDescription: "None!",
             canComplete: function() {return player.points.gte(1e48)},
             unlocked() { return (hasMilestone('c', 5)) },
@@ -107,7 +107,7 @@ addLayer("c", {
         32: {
             name: "The Edge",
             challengeDescription: "Upgrade W13,14,15 is nerfed.",
-            goalDescription: "1e70 Grams",
+            goalDescription: "1e69 Grams",
             rewardDescription: "Unlock a new layer.",
             canComplete: function() {return player.points.gte(1e70)},
             unlocked() { return (hasMilestone('c', 6)) },
@@ -124,12 +124,20 @@ addLayer("c", {
         42: {
             name: "MegaDeath",
             challengeDescription: "Reduce gram gain to ^0.002.",
-            goalDescription: "1e15 Grams",
+            goalDescription: "1e303 Grams",
             rewardDescription: "^1.1 to all below currencies.",
-            canComplete: function() {return player.points.gte(1e15)},
+            canComplete: function() {return player.points.gte(1e303)},
             unlocked() { return (hasMilestone('c', 7)) },
 
         },
+    },
+    autoUpgrade() {
+        return hasMilestone("u", 2)
+    },
+    passiveGeneration() {
+        let gen = new Decimal(0)
+        if (hasMilestone("u", 2)) gen = new Decimal(0.01)
+        return gen
     },
     name: "comparison", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized

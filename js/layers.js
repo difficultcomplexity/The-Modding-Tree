@@ -25,7 +25,7 @@ addLayer("w", {
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("w", 12) },
             effect() {
-                let effect = player.points.add(1.1).pow(0.19)
+                let effect = player.points.add(1.1).pow(0.175)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
                 return effect
@@ -62,24 +62,24 @@ addLayer("w", {
             cost: new Decimal(1e6),
             unlocked() { return hasUpgrade("o", 12) },
             effect() {
-                return player.points.add(1).pow(0.05)
+                return player.points.add(1).pow(0.045)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         22: {
             title: "Softcapped...",
-            description: "Buff Weight+ by ^0.1.",
-            cost: new Decimal(1e10),
+            description: "Buff Weight+ by ^0.075.",
+            cost: new Decimal(1e9),
             unlocked() { return hasUpgrade("w", 21) },
             effect() {
-                return player.w.points.add(1).pow(0.09)
+                return player.w.points.add(1).pow(0.075)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         23: {
             title: "Ascendious!",
             description: "Transcend your grams into a ascended grams.",
-            cost: new Decimal(5e14),
+            cost: new Decimal(1e14),
             unlocked() { return hasUpgrade("w", 22) },
             effect() {
                 return player.points.add(1.0).pow(0.15)
@@ -89,7 +89,7 @@ addLayer("w", {
         24: {
             title: "Gorda Echinadna!",
             description: "Get more comparisons based on OVERWEIGHTS.",
-            cost: new Decimal(1e40),
+            cost: new Decimal(1e35),
             unlocked() { return hasMilestone("c", 7) },
             effect() {
                 return player.o.points.pow(2.5)
@@ -102,7 +102,7 @@ addLayer("w", {
             cost: new Decimal(1e100),
             unlocked() { return hasMilestone("u", 3) },
             effect() {
-                return player.c.points.add(1).pow(0.2)
+                return player.c.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
@@ -113,6 +113,14 @@ addLayer("w", {
             effectDescription: "Get ???.",
             done() { return player.w.points.gte(1e308) }
         },
+    },
+    autoUpgrade() {
+        return hasMilestone("o", 2)
+    },
+    passiveGeneration() {
+        let gen = new Decimal(0)
+        if (hasMilestone("o", 1)) gen = new Decimal(0.5)
+        return gen
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "w", // This appears on the layer's node. Default is the id with the first letter capitalized
