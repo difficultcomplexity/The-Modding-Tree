@@ -11,10 +11,10 @@ addLayer("w", {
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("w", 11) },
             effect() {
-                let effect = player.points.add(1.5).pow(0.333)
+                let effect = player.w.points.add(1.5).pow(0.3)
                 if (inChallenge("c", 11)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
-                if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.1)
+                if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.15)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -25,7 +25,7 @@ addLayer("w", {
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("w", 12) },
             effect() {
-                let effect = player.points.add(1.1).pow(0.175)
+                let effect = player.points.add(1.1).pow(0.19)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
                 return effect
@@ -82,7 +82,27 @@ addLayer("w", {
             cost: new Decimal(5e14),
             unlocked() { return hasUpgrade("w", 22) },
             effect() {
-                return player.points.add(1.0).pow(0.115)
+                return player.points.add(1.0).pow(0.135)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        24: {
+            title: "Gorda Echinadna!",
+            description: "Get more comparisons based on OVERWEIGHTS.",
+            cost: new Decimal(1e40),
+            unlocked() { return hasMilestone("c", 7) },
+            effect() {
+                return player.o.points.pow(2.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        25: {
+            title: "The Other Realm",
+            description: "Get more weights based on COMPARISONS.",
+            cost: new Decimal(1e100),
+            unlocked() { return hasMilestone("u", 3) },
+            effect() {
+                return player.c.points.add(1).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
@@ -96,6 +116,7 @@ addLayer("w", {
     },
     name: "weight", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "w", // This appears on the layer's node. Default is the id with the first letter capitalized
+    branches: ["o", "c"],
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -113,6 +134,7 @@ addLayer("w", {
         if (hasUpgrade('o', 11)) mult = mult.times(upgradeEffect('o', 11))
         if (hasUpgrade('w', 21)) mult = mult.times(upgradeEffect('w', 21))
         if (hasUpgrade('w', 22)) mult = mult.times(upgradeEffect('w', 22))
+        if (hasUpgrade('w', 25)) mult = mult.times(upgradeEffect('w', 25))
         if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
         if (hasUpgrade('u', 11)) mult = mult.times(upgradeEffect('u', 11))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))

@@ -32,6 +32,11 @@ addLayer("c", {
             done() { return player.c.points.gte(1e9) }
         },
         7: {
+            requirementDescription: "1e10 Comparisons",
+            effectDescription: "Unlock 1 new upgrade on Weight layer.",
+            done() { return player.c.points.gte(1e10) }
+        },
+        8: {
             requirementDescription: "1e12 Comparisons",
             effectDescription: "Unlock Shattered Challenge.",
             done() { return player.c.points.gte(1e12) }
@@ -49,10 +54,10 @@ addLayer("c", {
         },
         12: {
             title: "Comparisons... COMPARE!",
-            description: "Get ((????)^1.1)x amount of grams.",
+            description: "Get ((????)^1.25)x amount of grams.",
             cost: new Decimal(10000),
             effect() {
-                return player.c.points.mul(0.001).pow(1.1)
+                return player.c.points.mul(0.001).pow(1.25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -60,10 +65,10 @@ addLayer("c", {
     challenges: {
         11: {
             name: "Mountaintop: Volcanic",
-            challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.6.",
+            challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.5.",
             goalDescription: "2e16 Grams",
-            
-            canComplete: function() {return player.points.gte(2.393e16)},
+            rewardDescription: "None!",
+            canComplete: function() {return player.points.gte(2.5e16)},
             unlocked() { return (hasMilestone('c', 1)) },
             
         },
@@ -71,39 +76,39 @@ addLayer("c", {
             name: "Mountain Evertop",
             challengeDescription: "Upgrade W13,14 is nerfed and reduce gram gain to ^0.75.",
             goalDescription: "5e21 Grams",
-            
-            canComplete: function() {return player.points.gte(4.7533e21)},
+            rewardDescription: "None!",
+            canComplete: function() {return player.points.gte(5e21)},
             unlocked() { return (hasMilestone('c', 2)) },
         },
         21: {
             name: "Moon",
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
-            goalDescription: "5e27 Grams",
-            
-            canComplete: function() {return player.points.gte(5.33e27)},
+            goalDescription: "2e28 Grams",
+            rewardDescription: "None!",
+            canComplete: function() {return player.points.gte(2e28)},
             unlocked() { return (hasMilestone('c', 3)) },
         },
         22: {
             name: "Betelgeuse",
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
-            goalDescription: "4e33 Grams",
-            
-            canComplete: function() {return player.points.gte(4.33e33)},
+            goalDescription: "5e33 Grams",
+            rewardDescription: "None!",
+            canComplete: function() {return player.points.gte(5e33)},
             unlocked() { return (hasMilestone('c', 4)) },
         },
         31: {
             name: "Choco Way",
             challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.5",
-            goalDescription: "5e47 Grams",
-            
-            canComplete: function() {return player.points.gte(5.6e47)},
+            goalDescription: "1e48 Grams",
+            rewardDescription: "None!",
+            canComplete: function() {return player.points.gte(1e48)},
             unlocked() { return (hasMilestone('c', 5)) },
         },
         32: {
             name: "The Edge",
             challengeDescription: "Upgrade W13,14,15 is nerfed.",
             goalDescription: "1e70 Grams",
-            rewardDescription: "You are worthy, now. Completing this will grant you a new layer.",
+            rewardDescription: "Unlock a new layer.",
             canComplete: function() {return player.points.gte(1e70)},
             unlocked() { return (hasMilestone('c', 6)) },
         },
@@ -111,7 +116,7 @@ addLayer("c", {
             name: "The Shattered Universe",
             challengeDescription: "Upgrade W12,13,14,15 and O15 is nerfed significally and reduce gram gain to ^0.1",
             goalDescription: "Googol Grams",
-            rewardDescription: "You are worthy, now. Completing this will grant you time travelling.",
+            rewardDescription: "Unlock Row 4 Layer.",
             canComplete: function() {return player.points.gte(1e100)},
             unlocked() { return (hasMilestone('c', 4)) },
 
@@ -128,6 +133,7 @@ addLayer("c", {
     },
     name: "comparison", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized
+    branches: ["u"],
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -140,9 +146,10 @@ addLayer("c", {
     baseResource: "weights", // Name of resource prestige is based on
     baseAmount() {return player.w.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.25, // Prestige currency exponent
+    exponent: 0.275, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

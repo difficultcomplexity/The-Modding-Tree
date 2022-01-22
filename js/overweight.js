@@ -15,12 +15,12 @@ addLayer("o", {
         },
         12: {
             title: "Raging In!",
-            description: "Gain multi based on overweights. (2^x)",
+            description: "Gain multi based on overweights. (1.9^x)",
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("o", 11) },
             
             effect() {
-                let effect = new Decimal(2).pow(player.o.points)
+                let effect = new Decimal(1.9).pow(player.o.points)
                 if (inChallenge("c", 22)) effect = new Decimal(32)
                 return effect
             },
@@ -75,7 +75,8 @@ addLayer("o", {
     },
     name: "overweight",
     symbol: "O",
-    position: 1,
+    branches: ["u"],
+    position: 3,
     startData() { return {
         unlocked: false,
         points: new Decimal(0),

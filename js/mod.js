@@ -3,8 +3,8 @@ let modInfo = {
 	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
-
+	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js", "singularity.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
+    
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new Decimal (10), // Used for hard resets and new players
@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03.75g",
-	name: "Comparisons... COMPARE!",
+	num: "0.03.9g",
+	name: "Early Singularities",
 }
 
 let changelog = `<h1>Changelog:</h1><br>

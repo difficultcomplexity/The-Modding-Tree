@@ -29,6 +29,7 @@ addLayer("a", {
         21: {
             name: "Extension",
             tooltip: "Buy a upgrade that gets you more upgrades, and milestones to your weight layer.",
+            image: "https://cdn.discordapp.com/attachments/762072248697749544/934423637174419466/extension.png",
             done() { return hasUpgrade("o", 13) }
         },
         22: {
@@ -82,6 +83,24 @@ addLayer("a", {
             name: "The TRUE Universe.",
             tooltip: "Reset universally..",
             done() { return player.u.points.gte(1) }
+        },
+        42: {
+            name: "The Answer to Life and Universe",
+            tooltip: "Get the 1st Universal Milestone",
+            image: "https://cdn.discordapp.com/attachments/762072132296769586/934394100340359248/answer42.png",
+            done() { return (hasMilestone('u', 1)) }
+        },
+        43: {
+            name: "The Answer to Everything",
+            tooltip: "Get the 5th Universal Upgrade.",
+            image: "https://cdn.discordapp.com/attachments/762072132296769586/934394485427798016/question42.png",
+            done() { return (hasUpgrade('u', 15)) }
+        },
+        44: {
+            name: "Centillion",
+            tooltip: "Get to 100-illion number..",
+            image: "https://cdn.discordapp.com/attachments/762072132296769586/934414192465838080/Centillion.png",
+            done() { return player.points.gte("e303") }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
