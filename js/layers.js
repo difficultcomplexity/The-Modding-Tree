@@ -47,10 +47,10 @@ addLayer("w", {
         },
         15: {
             title: "Upgrade of Upgrades!",
-            description: "Upgrades boosts Grams by 1.7x each.",
+            description: "Upgrades boosts Grams by 1.75x each.",
             cost: new Decimal(50),
             effect() {
-                let effect = Decimal.pow(1.7, player.w.upgrades.length)
+                let effect = Decimal.pow(1.75, player.w.upgrades.length)
                 if (inChallenge("c", 32)) effect = Decimal.pow(2.5, player.w.upgrades.length)
                 return effect
             },
@@ -82,7 +82,7 @@ addLayer("w", {
             cost: new Decimal(5e14),
             unlocked() { return hasUpgrade("w", 22) },
             effect() {
-                return player.points.add(1.0).pow(0.135)
+                return player.points.add(1.0).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
