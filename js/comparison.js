@@ -115,9 +115,9 @@ addLayer("c", {
         41: {
             name: "The Shattered Universe",
             challengeDescription: "Upgrade W12,13,14,15 and O15 is nerfed significally and reduce gram gain to ^0.1",
-            goalDescription: "Googol Grams",
+            goalDescription: "1e303 Grams",
             rewardDescription: "Unlock Row 4 Layer.",
-            canComplete: function() {return player.points.gte(1e100)},
+            canComplete: function() {return player.points.gte(1e303)},
             unlocked() { return (hasMilestone('c', 4)) },
 
         },
