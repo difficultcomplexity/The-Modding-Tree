@@ -16,12 +16,13 @@ addLayer("o", {
         },
         12: {
             title: "Raging In!",
-            description: "Gain multi based on overweights. (2.5^x)",
+            description: "Gain multi based on overweights. (2.75^x)",
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("o", 11) },
             
             effect() {
-                let effect = new Decimal(2.5).pow(player.o.points)
+                let effect = new Decimal(2.75).pow(player.o.points)
+                if (hasChallenge("c", 41)) effect = new Decimal(3).pow(player.o.points)
                 if (inChallenge("c", 22)) effect = new Decimal(32)
                 return effect
             },
