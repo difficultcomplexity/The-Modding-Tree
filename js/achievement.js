@@ -98,7 +98,7 @@ addLayer("a", {
         },
         44: {
             name: "Centillion",
-            tooltip: "Get to 100-illion number..",
+            tooltip: "Get to 100-illion number.",
             image: "https://cdn.discordapp.com/attachments/762072132296769586/934414192465838080/Centillion.png",
             done() { return player.points.gte("e303") }
         },
@@ -107,6 +107,18 @@ addLayer("a", {
             tooltip: "Get to 500-illion number..",
             image: "https://cdn.discordapp.com/attachments/762072132296769586/934472135957696602/ironstar.png",
             done() { return player.points.gte("e1500") }
+        },
+        51: {
+            name: "Dozenal Singularity",
+            tooltip: "Get 12 Singularity.",
+            image: "https://cdn.discordapp.com/attachments/762036407719428099/934723150485262377/Blackholedozenal.png",
+            done() { return player.s.points.gte(12) }
+        },
+        52: {
+            name: "Addex Upgradies",
+            tooltip: "Get 12 Singularity.",
+            image: "https://cdn.discordapp.com/attachments/762036407719428099/934723150485262377/Blackholedozenal.png",
+            done() { return player.s.points.gte(12) }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.

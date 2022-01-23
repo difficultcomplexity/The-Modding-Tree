@@ -138,7 +138,8 @@ addLayer("c", {
     },
     passiveGeneration() {
         let gen = new Decimal(0)
-        if (hasMilestone("u", 2)) gen = new Decimal(0.01)
+        if (hasMilestone("u", 2)) gen = new Decimal(0.0001)
+        if (hasMilestone("s", 3)) gen = new Decimal(0.01)
         return gen
     },
     name: "comparison", // This is optional, only used in a few places, If absent it just uses the layer id.

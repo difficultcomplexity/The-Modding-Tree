@@ -6,7 +6,7 @@ addLayer("s", {
             description: "Singularities boost Grams gain by ((singularity)^50)x.",
             cost: new Decimal(3),
             effect() {
-                return player.s.points.mul(1).pow(50)
+                return player.s.points.add(1).mul(1).pow(50)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -15,7 +15,7 @@ addLayer("s", {
             description: "Singularities boost Weights gain by ((singularity)^20)x.",
             cost: new Decimal(5),
             effect() {
-                return player.s.points.mul(1).pow(20)
+                return player.s.points.add(1).mul(1).pow(20)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -24,7 +24,7 @@ addLayer("s", {
             description: "Singularities boost Comparisons gain by ((singularity)^10)x.",
             cost: new Decimal(6),
             effect() {
-                return player.s.points.mul(1).pow(10)
+                return player.s.points.add(1).mul(1).pow(10)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -33,7 +33,7 @@ addLayer("s", {
             description: "Singularities boost Universes gain by ((singularity)^5)x.",
             cost: new Decimal(8),
             effect() {
-                return player.s.points.mul(1).pow(5)
+                return player.s.points.add(1).mul(1).pow(5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -42,9 +42,37 @@ addLayer("s", {
             description: "Singularities boost Grams gain by a lot.",
             cost: new Decimal(11),
             effect() {
-                return player.s.points.mul(player.u.points.pow(0.75)).pow(0.85)
+                return player.s.points.add(0.1).mul(player.u.points.pow(0.75)).pow(0.85)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    milestones: {
+        1: {
+            requirementDescription: "Five Nights At Freddy's",
+            effectDescription: "Autobuy U upgrades.",
+            done() { return player.s.points.gte(3) },
+            toggles: [["u", "auto"]],
+        },
+        2: {
+            requirementDescription: "Five Nights At Freddy's 2",
+            effectDescription: "Unknown, give me ideas.",
+            done() { return player.s.points.gte(5) },
+        },
+        3: {
+            requirementDescription: "Five Nights At Freddy's 3",
+            effectDescription: "Increase comparison gain per second from 0.01% to 1%.",
+            done() { return player.s.points.gte(8) }
+        },
+        4: {
+            requirementDescription: "Five Nights At Freddy's 4",
+            effectDescription: "Get 1% Universe Points per second.",
+            done() { return player.s.points.gte(12) }
+        },
+        5: {
+            requirementDescription: "Five Nights At Freddy's 5",
+            effectDescription: "Keep S upgrades.",
+            done() { return player.s.points.gte(16) }
         },
     },
     name: "singularity", // This is optional, only used in a few places, If absent it just uses the layer id.

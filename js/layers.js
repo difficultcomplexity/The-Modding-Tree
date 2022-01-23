@@ -148,6 +148,7 @@ addLayer("w", {
         if (hasUpgrade('w', 25)) mult = mult.times(upgradeEffect('w', 25))
         if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
         if (hasUpgrade('u', 11)) mult = mult.times(upgradeEffect('u', 11))
+        if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
         if (hasUpgrade('s', 12)) mult = mult.times(upgradeEffect('s', 12))
         if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))

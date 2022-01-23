@@ -9,6 +9,16 @@ addLayer("u", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        12: {
+            title: "Parallel Universes!",
+            description: "Improve the previous upgrade and make the formula improve to amount of singularities.",
+            cost: new Decimal(1e15),
+            unlocked() { return (hasMilestone('u', 4)) },
+            effect() {
+                return player.u.points.mul(player.s.points.add(1)).pow(0.525)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     milestones: {
         1: {
@@ -43,6 +53,9 @@ addLayer("u", {
             effectDescription: "Universe does not reset Sigularities AND its upgrades.",
             done() { return player.u.points.gte(1e50) }
         },
+    },
+    autoUpgrade() {
+        return hasMilestone("s", 1)
     },
     name: "Universe", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "U", // This appears on the layer's node. Default is the id with the first letter capitalized
