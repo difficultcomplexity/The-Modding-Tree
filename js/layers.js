@@ -73,11 +73,11 @@ addLayer("w", {
         },
         22: {
             title: "Softcapped...",
-            description: "Buff Weight+ by ^0.075.",
+            description: "Buff Weight+ by ^0.08.",
             cost: new Decimal(1e9),
             unlocked() { return hasUpgrade("w", 21) },
             effect() {
-                let effect = player.w.points.add(1).pow(0.075)
+                let effect = player.w.points.add(1).pow(0.08)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
