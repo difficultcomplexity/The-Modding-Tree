@@ -103,6 +103,13 @@ addLayer("o", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    //doReset(resettingLayer) {
+    //    var keep = []
+    //    if (hasMilestone("u", 1)) keep.push("upgrades")
+    //    if (hasMilestone("u", 3)) keep.push("milestones")
+    //    if (player[this.layer].row <= player[resettingLayer].row) return
+    //    layerDataReset(this.layer, keep)
+    //},
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "o", description: "O: Reset for Overweights", onPress(){if (canReset(this.layer)) doReset(this.layer)}},

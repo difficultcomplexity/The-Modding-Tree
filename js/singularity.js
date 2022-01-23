@@ -96,6 +96,12 @@ addLayer("s", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    //doReset(resettingLayer) {
+    //    var keep = []
+    //    if (hasMilestone("s", 5)) keep.push("upgrades")
+    //    if (player[this.layer].row <= player[resettingLayer].row) return
+    //    layerDataReset(this.layer, keep)
+    //},
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "s", description: "S: Reset for SINGULARITIES", onPress(){if (canReset(this.layer)) doReset(this.layer)}},

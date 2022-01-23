@@ -100,8 +100,8 @@ addLayer("w", {
             cost: new Decimal(1e35),
             unlocked() { return hasMilestone("c", 7) },
             effect() {
-                let effect = player.o.points.pow(2.5)
-                if (hasChallenge("c", 22)) effect = player.o.points.pow(2.85)
+                let effect = player.o.points.add(1).pow(2.5)
+                if (hasChallenge("c", 22)) effect = player.o.points.add(1).pow(2.85)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
@@ -190,6 +190,13 @@ addLayer("w", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    //doReset(resettingLayer) {
+    //    var keep = []
+    //    if (hasMilestone("o", 3)) keep.push("upgrades")
+    //    if (hasMilestone("u", 1)) keep.push("milestones")
+    //    if (layers[this.layer].row <= layers[resettingLayer].row) return
+    //    layerDataReset(this.layer, keep)
+    //},    
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "w", description: "W: Reset for weights", onPress(){if (canReset(this.layer)) doReset(this.layer)}},

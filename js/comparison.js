@@ -122,7 +122,7 @@ addLayer("c", {
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
             goalDescription: "3e31 Grams",
             rewardDescription: "Gorda Echinadna has improved formula.",
-            canComplete: function() {return player.points.gte(2e32)},
+            canComplete: function() {return player.points.gte(4e31)},
             unlocked() { return (hasMilestone('c', 4)) },
         },
         31: {
@@ -130,15 +130,15 @@ addLayer("c", {
             challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.75",
             goalDescription: "1e45 Grams",
             rewardDescription: "Heavier weights has significantly changed formula!",
-            canComplete: function() {return player.points.gte(1e46)},
+            canComplete: function() {return player.points.gte(2e45)},
             unlocked() { return (hasMilestone('c', 5)) },
         },
         32: {
             name: "The Edge",
             challengeDescription: "Upgrade W13,14,15 is nerfed.",
-            goalDescription: "1e69 Grams",
+            goalDescription: "1e67 Grams",
             rewardDescription: "Unlock a new layer.",
-            canComplete: function() {return player.points.gte(1e69)},
+            canComplete: function() {return player.points.gte(1e67)},
             unlocked() { return (hasMilestone('c', 6)) },
         },
         41: {
@@ -196,6 +196,12 @@ addLayer("c", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    //doReset(resettingLayer) {
+    //    var keep = []
+    //    if (hasMilestone("u", 1)) keep.push("upgrades")
+    //    if (layers[this.layer].row <= layers[resettingLayer].row) return
+    //    layerDataReset(this.layer, keep)
+    //},
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "c", description: "C: Reset for comparisons", onPress(){if (canReset(this.layer)) doReset(this.layer)}},

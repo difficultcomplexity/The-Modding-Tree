@@ -25,7 +25,7 @@ addLayer("u", {
             cost: new Decimal(1e303),
             unlocked() { return (hasUpgrade('u', 12)) },
             effect() {
-                return player.s.points.pow(202)
+                return player.s.points.add(1).pow(202)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
