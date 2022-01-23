@@ -29,6 +29,7 @@ addLayer("w", {
             effect() {
                 let effect = player.points.add(1.1).pow(0.175)
                 if (hasChallenge("c", 12)) effect = player.points.add(1.5).pow(0.18)
+                if (hasUpgrade("u", 15)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
                 return effect
@@ -67,6 +68,7 @@ addLayer("w", {
             effect() {
                 let effect = player.points.add(1).pow(0.045)
                 if (hasChallenge("c", 21)) effect = player.points.add(1.5).pow(0.0475)
+                if (hasUpgrade("u", 15)) effect = player.points.add(1.5).pow(0.05)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -125,6 +127,16 @@ addLayer("w", {
             effect() {
                 let effect = player.u.points.add(1).pow(0.225)
                 return effect
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        32: {
+            title: "God of Universe",
+            description: "Universe multiplies your grams.",
+            cost: new Decimal("e12500"),
+            unlocked() { return hasUpgrade("w", 31) },
+            effect() {
+                return player.u.points.add(1.0).pow(0.9)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },

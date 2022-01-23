@@ -116,9 +116,9 @@ addLayer("a", {
         },
         52: {
             name: "Addex Upgradies",
-            tooltip: "Get 12 Singularity.",
+            tooltip: "Get Universe Upgrade 13.",
             image: "https://cdn.discordapp.com/attachments/762036407719428099/934723150485262377/Blackholedozenal.png",
-            done() { return player.s.points.gte(12) }
+            done() { return hasUpgrade("u", 13) }
         },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.

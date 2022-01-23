@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.04.5g | Pre-release 1",
-	name: "Type 2 Singularities",
+	num: "0.04.5g | Pre-release 2",
+	name: "Type 3 Singularities",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -52,6 +52,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 15)) gain = gain.times(upgradeEffect('w', 15))
 	if (hasMilestone('w', 1)) gain = gain.times(5)
 	if (hasUpgrade('w', 23)) gain = gain.times(upgradeEffect('w', 23))
+	if (hasUpgrade('w', 32)) gain = gain.times(upgradeEffect('w', 32))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
 	if (hasUpgrade('o', 15)) gain = gain.times(10)
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades

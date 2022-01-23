@@ -25,7 +25,7 @@ addLayer("u", {
             cost: new Decimal(1e303),
             unlocked() { return (hasUpgrade('u', 12)) },
             effect() {
-                return player.s.points.pow(200)
+                return player.s.points.pow(202)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -33,11 +33,17 @@ addLayer("u", {
             title: "Universal Slippex",
             description: "Increase weight gain by gram gain.",
             cost: new Decimal("e450"),
-            unlocked() { return (hasUpgrade('u', 12)) },
+            unlocked() { return (hasUpgrade('u', 13)) },
             effect() {
                 return player.points.add(1).pow(0.05)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        15: {
+            title: "FNAF World",
+            description: "Improve few upgrade's formulas.",
+            cost: new Decimal("e603"),
+            unlocked() { return (hasUpgrade('u', 14)) },
         },
     },
     milestones: {
