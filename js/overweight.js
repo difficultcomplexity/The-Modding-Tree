@@ -39,6 +39,7 @@ addLayer("o", {
             effect() {
                 let effect = player.w.points.add(1).pow(0.175)
                 if (inChallenge("c", 22)) effect = new Decimal(10)
+                if (inChallenge("c", 41)) effect = player.w.points.add(1).pow(0.15)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect

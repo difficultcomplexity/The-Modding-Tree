@@ -25,7 +25,7 @@ addLayer("u", {
         },
         3: {
             requirementDescription: "500 Universes",
-            effectDescription: "Unlock new Upgrades.",
+            effectDescription: "Unlock new Upgrades and keep O milestones.",
             done() { return player.u.points.gte(500) }
         },
         4: {
@@ -37,6 +37,11 @@ addLayer("u", {
             requirementDescription: "1e10 Universes",
             effectDescription: "Unlock Singularity Layer.",
             done() { return player.u.points.gte(1e10) }
+        },
+        6: {
+            requirementDescription: "1e50 Universes",
+            effectDescription: "Universe does not reset Sigularities AND its upgrades.",
+            done() { return player.u.points.gte(1e50) }
         },
     },
     name: "Universe", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -56,6 +61,7 @@ addLayer("u", {
     exponent: 0.18, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('s', 14)) mult = mult.times(upgradeEffect('s', 14))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

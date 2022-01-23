@@ -15,6 +15,7 @@ addLayer("w", {
                 if (inChallenge("c", 11)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
                 if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.15)
+                if (inChallenge("c", 41)) effect = player.points.add(1).pow(0.2)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -102,7 +103,9 @@ addLayer("w", {
             cost: new Decimal(1e100),
             unlocked() { return hasMilestone("u", 3) },
             effect() {
-                return player.c.points.add(1).pow(0.15)
+                let effect = player.c.points.add(1).pow(0.15)
+                if (inChallenge("c", 41)) effect = player.c.points.add(1).pow(0.1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         }
@@ -145,6 +148,8 @@ addLayer("w", {
         if (hasUpgrade('w', 25)) mult = mult.times(upgradeEffect('w', 25))
         if (hasUpgrade('c', 11)) mult = mult.times(upgradeEffect('c', 11))
         if (hasUpgrade('u', 11)) mult = mult.times(upgradeEffect('u', 11))
+        if (hasUpgrade('s', 12)) mult = mult.times(upgradeEffect('s', 12))
+        if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
         return mult
     },

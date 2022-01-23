@@ -13,7 +13,7 @@ addLayer("c", {
         },
         3: {
             requirementDescription: "1,000 Comparisons",
-            effectDescription: "Unlock Earth Challenge, keep O milestones.",
+            effectDescription: "Unlock Earth Challenge.",
             done() { return player.c.points.gte(1000) }
         },
         4: {
@@ -45,19 +45,21 @@ addLayer("c", {
     upgrades: {
         11: {
             title: "Compare the Earth with Mars!",
-            description: "Get 1.25x more Weight per each Overweight.",
+            description: "Get 1.2x more Weight per each Overweight.",
             cost: new Decimal(100),
             effect() {
-                return Decimal.pow(1.25, player.o.points)
+                return Decimal.pow(1.2, player.o.points)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         12: {
             title: "Comparisons... COMPARE!",
-            description: "Get ((????)^1.2)x amount of grams.",
+            description: "Get ((????)^1.1)x amount of grams.",
             cost: new Decimal(10000),
             effect() {
-                return player.c.points.mul(0.001).pow(1.2)
+                let effect = player.c.points.mul(0.001).pow(1.1)
+                if (inChallenge("c", 41)) effect = player.c.points.mul(1e-10).pow(0.75)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -158,6 +160,7 @@ addLayer("c", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
+        if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

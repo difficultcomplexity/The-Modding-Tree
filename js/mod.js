@@ -24,7 +24,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Note from the creator: Im sorry, this changelog is outdated because i dont know how do i change it...`
 	
 
-let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
+let winText = `Contract! You came to an end, but now.`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -55,6 +55,14 @@ function getPointGen() {
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades
 	if (hasUpgrade('u', 11)) gain = gain.times(upgradeEffect('u', 11))
+	if (hasUpgrade('s', 11)) mult = mult.times(upgradeEffect('s', 11))
+	if (inChallenge("c", 11)) gain = gain.pow(0.5)
+	if (inChallenge("c", 12)) gain = gain.pow(0.75)
+	if (inChallenge("c", 21)) gain = gain.times(1e-6)
+	if (inChallenge("c", 22)) gain = gain.pow(0.8)
+	if (inChallenge("c", 31)) gain = gain.pow(0.5)
+	if (inChallenge("c", 41)) gain = gain.pow(0.1)
+	if (inChallenge("c", 42)) gain = gain.pow(0.002)
 	return gain
 }
 
