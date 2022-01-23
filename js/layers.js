@@ -116,13 +116,24 @@ addLayer("w", {
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
-        }
+        },
+        31: {
+            title: "Colliding Universes",
+            description: "Gain more COMPARISONS based on UNIVERSES.",
+            cost: new Decimal("e10000"),
+            unlocked() { return hasMilestone("u", 3) },
+            effect() {
+                let effect = player.u.points.add(1).pow(0.225)
+                return effect
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
     },
     milestones: {
         1: {
-            requirementDescription: "1e308 Weights",
-            effectDescription: "Get ???.",
-            done() { return player.w.points.gte(1e308) }
+            requirementDescription: "e1e5 Weights",
+            effectDescription: "Inflation Era.",
+            done() { return player.w.points.gte("e100000") }
         },
     },
     autoUpgrade() {
@@ -160,7 +171,8 @@ addLayer("w", {
         if (hasUpgrade('s', 12)) mult = mult.times(upgradeEffect('s', 12))
         if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
-        
+        mult = softcap(mult, new Decimal("e4000"), 0.25) // Tetra-softcapped Layer 1
+        mult = softcap(mult, new Decimal("e1e300"), 0.1) // Tetra-softcapped Layer 2
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

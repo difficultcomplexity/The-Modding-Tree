@@ -81,6 +81,15 @@ addLayer("c", {
             description: "Improve comparison gain formula on Upgrade C13.",
             cost: new Decimal(1e10),
         },
+        15: {
+            title: "Πάpα πoλύ.",
+            description: "Now you can gain MORE.",
+            cost: new Decimal("e3000"),
+            effect() {
+                return player.c.points.add(1).pow(0.014)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     challenges: {
         11: {
@@ -179,6 +188,7 @@ addLayer("c", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
+        if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
         if (hasUpgrade('c', 13)) mult = mult.times(upgradeEffect('c', 13))
         if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
         return mult

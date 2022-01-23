@@ -57,6 +57,7 @@ function getPointGen() {
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades
 	if (hasUpgrade('u', 11)) gain = gain.times(upgradeEffect('u', 11))
 	if (hasUpgrade('u', 12)) gain = gain.times(upgradeEffect('u', 12))
+	if (hasUpgrade('u', 13)) gain = gain.times(upgradeEffect('u', 13))
 	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
 	if (inChallenge("c", 11)) gain = gain.pow(0.5)
 	if (inChallenge("c", 12)) gain = gain.pow(0.75)
@@ -64,7 +65,7 @@ function getPointGen() {
 	if (inChallenge("c", 22)) gain = gain.pow(0.8)
 	if (inChallenge("c", 31)) gain = gain.pow(0.75)
 	if (inChallenge("c", 32)) gain = gain.pow(0.75)
-	if (inChallenge("c", 41)) gain = gain.pow(0.1)
+	if (inChallenge("c", 41)) gain = gain.pow(0.075)
 	if (inChallenge("c", 42)) gain = gain.pow(0.002)
 	return gain
 }

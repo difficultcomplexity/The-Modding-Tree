@@ -19,6 +19,26 @@ addLayer("u", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        13: {
+            title: "Un Owen Was Her",
+            description: "マクドナルドに行こう!.",
+            cost: new Decimal(1e303),
+            unlocked() { return (hasUpgrade('u', 12)) },
+            effect() {
+                return player.s.points.pow(200)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        14: {
+            title: "Universal Slippex",
+            description: "Increase weight gain by gram gain.",
+            cost: new Decimal("e450"),
+            unlocked() { return (hasUpgrade('u', 12)) },
+            effect() {
+                return player.points.add(1).pow(0.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     milestones: {
         1: {
@@ -79,7 +99,9 @@ addLayer("u", {
     exponent: 0.18, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('c', 15)) mult = mult.times(upgradeEffect('c', 15))
         if (hasUpgrade('s', 14)) mult = mult.times(upgradeEffect('s', 14))
+        mult = softcap(mult, new Decimal("e303"), 0.16) // Tetra-softcapped Layer 1
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
