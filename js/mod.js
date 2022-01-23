@@ -53,6 +53,7 @@ function getPointGen() {
 	if (hasMilestone('w', 1)) gain = gain.times(5)
 	if (hasUpgrade('w', 23)) gain = gain.times(upgradeEffect('w', 23))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
+	if (hasUpgrade('o', 15)) gain = gain.times(10)
 	if (hasUpgrade('c', 12)) gain = gain.times(upgradeEffect('c', 12)) // Comparison Upgrades
 	if (hasUpgrade('u', 11)) gain = gain.times(upgradeEffect('u', 11))
 	if (hasUpgrade('u', 12)) gain = gain.times(upgradeEffect('u', 12))
