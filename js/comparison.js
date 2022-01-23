@@ -59,7 +59,7 @@ addLayer("c", {
             description: "Get ((????)^0.75)x amount of grams.",
             cost: new Decimal(10000),
             effect() {
-                let effect = player.c.points.mul(0.001).pow(0.8)
+                let effect = player.c.points.add(10000).mul(0.001).pow(0.8)
                 if (inChallenge("c", 41)) effect = player.c.points.mul(1e-10).pow(0.75)
                 return effect
             },
