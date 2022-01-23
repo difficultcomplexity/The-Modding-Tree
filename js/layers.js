@@ -11,10 +11,11 @@ addLayer("w", {
             cost: new Decimal(2),
             unlocked() { return hasUpgrade("w", 11) },
             effect() {
-                let effect = player.w.points.add(1.5).pow(0.3)
+                let effect = player.w.points.add(1.5).pow(0.25)
+                if (hasChallenge("c", 31)) effect = player.w.points.add(1.5).pow(0.275)
                 if (inChallenge("c", 11)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
-                if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.15)
+                if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.225)
                 if (inChallenge("c", 41)) effect = player.points.add(1).pow(0.2)
                 return effect
             },
@@ -27,6 +28,7 @@ addLayer("w", {
             unlocked() { return hasUpgrade("w", 12) },
             effect() {
                 let effect = player.points.add(1.1).pow(0.175)
+                if (hasChallenge("c", 12)) effect = player.points.add(1.5).pow(0.18)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
                 return effect
@@ -63,7 +65,9 @@ addLayer("w", {
             cost: new Decimal(1e6),
             unlocked() { return hasUpgrade("o", 12) },
             effect() {
-                return player.points.add(1).pow(0.045)
+                let effect = player.points.add(1).pow(0.045)
+                if (hasChallenge("c", 21)) effect = player.points.add(1.5).pow(0.0475)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -73,7 +77,8 @@ addLayer("w", {
             cost: new Decimal(1e9),
             unlocked() { return hasUpgrade("w", 21) },
             effect() {
-                return player.w.points.add(1).pow(0.075)
+                let effect = player.w.points.add(1).pow(0.075)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -93,7 +98,9 @@ addLayer("w", {
             cost: new Decimal(1e35),
             unlocked() { return hasMilestone("c", 7) },
             effect() {
-                return player.o.points.pow(2.5)
+                let effect = player.o.points.pow(2.5)
+                if (hasChallenge("c", 22)) effect = player.o.points.pow(2.85)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -103,7 +110,8 @@ addLayer("w", {
             cost: new Decimal(1e100),
             unlocked() { return hasMilestone("u", 3) },
             effect() {
-                let effect = player.c.points.add(1).pow(0.15)
+                let effect = player.c.points.add(1).pow(0.145)
+                if (hasChallenge("c", 11)) effect = player.points.add(1.25).pow(0.15)
                 if (inChallenge("c", 41)) effect = player.c.points.add(1).pow(0.1)
                 return effect
             },

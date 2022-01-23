@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.04g",
-	name: "Type 1 Singularities",
+	num: "0.04.5g | Pre-release 1",
+	name: "Type 2 Singularities",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -61,8 +61,8 @@ function getPointGen() {
 	if (inChallenge("c", 12)) gain = gain.pow(0.75)
 	if (inChallenge("c", 21)) gain = gain.times(1e-6)
 	if (inChallenge("c", 22)) gain = gain.pow(0.8)
-	if (inChallenge("c", 31)) gain = gain.pow(0.5)
-	if (inChallenge("c", 32)) gain = gain.pow(0.6)
+	if (inChallenge("c", 31)) gain = gain.pow(0.75)
+	if (inChallenge("c", 32)) gain = gain.pow(0.75)
 	if (inChallenge("c", 41)) gain = gain.pow(0.1)
 	if (inChallenge("c", 42)) gain = gain.pow(0.002)
 	return gain
@@ -78,7 +78,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e400"))
+	return player.points.gte(new Decimal("e3003"))
 }
 
 

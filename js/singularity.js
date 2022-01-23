@@ -3,37 +3,37 @@ addLayer("s", {
     upgrades: {
         11: {
             title: "Black Hole",
-            description: "Singularities boost Grams gain by ((singularity)^50)x.",
+            description: "Singularities boost Grams gain by ((singularity)^40)x.",
             cost: new Decimal(3),
             effect() {
-                return player.s.points.add(1).mul(1).pow(50)
+                return player.s.points.add(1).mul(1).pow(40)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         12: {
             title: "Lack Hole",
-            description: "Singularities boost Weights gain by ((singularity)^20)x.",
+            description: "Singularities boost Weights gain by ((singularity)^15)x.",
             cost: new Decimal(5),
             effect() {
-                return player.s.points.add(1).mul(1).pow(20)
+                return player.s.points.add(1).mul(1).pow(15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         13: {
             title: "Dark Hole",
-            description: "Singularities boost Comparisons gain by ((singularity)^10)x.",
+            description: "Singularities boost Comparisons gain by ((singularity)^8)x.",
             cost: new Decimal(6),
             effect() {
-                return player.s.points.add(1).mul(1).pow(10)
+                return player.s.points.add(1).mul(1).pow(8)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         14: {
             title: "Bark Hole",
-            description: "Singularities boost Universes gain by ((singularity)^5)x.",
+            description: "Singularities boost Universes gain by ((singularity)^4)x.",
             cost: new Decimal(8),
             effect() {
-                return player.s.points.add(1).mul(1).pow(5)
+                return player.s.points.add(1).mul(1).pow(4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -42,7 +42,7 @@ addLayer("s", {
             description: "Singularities boost Grams gain by a lot.",
             cost: new Decimal(11),
             effect() {
-                return player.s.points.add(0.1).mul(player.u.points.pow(0.75)).pow(0.85)
+                return player.s.points.add(0.1).mul(player.u.points.pow(0.1)).pow(player.s.points)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },

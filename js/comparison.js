@@ -48,20 +48,38 @@ addLayer("c", {
             description: "Get 1.2x more Weight per each Overweight.",
             cost: new Decimal(100),
             effect() {
-                return Decimal.pow(1.2, player.o.points)
+                let effect = Decimal.pow(1.2, player.o.points)
+                if (hasChallenge("c", 11)) effect = Decimal.pow(1.25, player.o.points)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         12: {
             title: "Comparisons... COMPARE!",
-            description: "Get ((????)^1.1)x amount of grams.",
+            description: "Get ((????)^0.75)x amount of grams.",
             cost: new Decimal(10000),
             effect() {
-                let effect = player.c.points.mul(0.001).pow(1.1)
+                let effect = player.c.points.mul(0.001).pow(0.8)
                 if (inChallenge("c", 41)) effect = player.c.points.mul(1e-10).pow(0.75)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        13: {
+            title: "I think we got too far.",
+            description: "Get 1.075x more comparison each overweight.",
+            cost: new Decimal(10000),
+            effect() {
+                let effect = Decimal.pow(1.075, player.o.points)
+                if (hasUpgrade("c", 14)) effect = Decimal.pow(1.150, player.o.points)
+                return effect
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        14: {
+            title: "I think we got too slow.",
+            description: "Improve comparison gain formula on Upgrade C13.",
+            cost: new Decimal(1e10),
         },
     },
     challenges: {
@@ -69,8 +87,8 @@ addLayer("c", {
             name: "Mountaintop: Volcanic",
             challengeDescription: "Upgrade W12 is nerfed and reduce gram gain to ^0.5.",
             goalDescription: "3e15 Grams",
-            rewardDescription: "None!",
-            canComplete: function() {return player.points.gte(2.5e16)},
+            rewardDescription: "The Other Realm has significantly improved formula!",
+            canComplete: function() {return player.points.gte(3e15)},
             unlocked() { return (hasMilestone('c', 1)) },
             
         },
@@ -78,32 +96,32 @@ addLayer("c", {
             name: "Mountain Evertop",
             challengeDescription: "Upgrade W13,14 is nerfed and reduce gram gain to ^0.75.",
             goalDescription: "2e20 Grams",
-            rewardDescription: "None!",
-            canComplete: function() {return player.points.gte(5e21)},
+            rewardDescription: "Prestigious has improved formula.",
+            canComplete: function() {return player.points.gte(3e20)},
             unlocked() { return (hasMilestone('c', 2)) },
         },
         21: {
             name: "Moon",
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
             goalDescription: "6e26 Grams",
-            rewardDescription: "None!",
-            canComplete: function() {return player.points.gte(2e28)},
+            rewardDescription: "Singularity has significantly improved formula.",
+            canComplete: function() {return player.points.gte(2e27)},
             unlocked() { return (hasMilestone('c', 3)) },
         },
         22: {
             name: "Betelgeuse",
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
             goalDescription: "3e31 Grams",
-            rewardDescription: "None!",
-            canComplete: function() {return player.points.gte(5e33)},
+            rewardDescription: "Gorda Echinadna has improved formula.",
+            canComplete: function() {return player.points.gte(2e32)},
             unlocked() { return (hasMilestone('c', 4)) },
         },
         31: {
             name: "Choco Way",
-            challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.5",
+            challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.75",
             goalDescription: "1e45 Grams",
-            rewardDescription: "None!",
-            canComplete: function() {return player.points.gte(1e48)},
+            rewardDescription: "Heavier weights has significantly changed formula!",
+            canComplete: function() {return player.points.gte(1e46)},
             unlocked() { return (hasMilestone('c', 5)) },
         },
         32: {
@@ -111,7 +129,7 @@ addLayer("c", {
             challengeDescription: "Upgrade W13,14,15 is nerfed.",
             goalDescription: "1e69 Grams",
             rewardDescription: "Unlock a new layer.",
-            canComplete: function() {return player.points.gte(1e70)},
+            canComplete: function() {return player.points.gte(1e69)},
             unlocked() { return (hasMilestone('c', 6)) },
         },
         41: {
@@ -157,10 +175,11 @@ addLayer("c", {
     baseResource: "weights", // Name of resource prestige is based on
     baseAmount() {return player.w.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.275, // Prestige currency exponent
+    exponent: 0.265, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
+        if (hasUpgrade('c', 13)) mult = mult.times(upgradeEffect('c', 13))
         if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
         return mult
     },

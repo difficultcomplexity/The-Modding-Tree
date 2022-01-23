@@ -2,10 +2,10 @@ addLayer("u", {
     upgrades: {
         11: {
             title: "Universe Time!",
-            description: "Universes boost Grams and Weight gain by ((universe)^0.5)x.",
+            description: "Universes boost Grams and Weight gain by ((universe)^0.35)x.",
             cost: new Decimal(1),
             effect() {
-                return player.u.points.mul(0.55).pow(0.525)
+                return player.u.points.add(1).mul(0.55).pow(0.35)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -15,7 +15,7 @@ addLayer("u", {
             cost: new Decimal(1e15),
             unlocked() { return (hasMilestone('u', 4)) },
             effect() {
-                return player.u.points.mul(player.s.points.add(1)).pow(0.525)
+                return player.u.points.add(1).mul(player.s.points.add(1)).pow(0.4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -56,6 +56,11 @@ addLayer("u", {
     },
     autoUpgrade() {
         return hasMilestone("s", 1)
+    },
+    passiveGeneration() {
+        let gen = new Decimal(0)
+        if (hasMilestone("s", 4)) gen = new Decimal(0.0001)
+        return gen
     },
     name: "Universe", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "U", // This appears on the layer's node. Default is the id with the first letter capitalized
