@@ -61,6 +61,7 @@ function getPointGen() {
 	if (inChallenge("c", 21)) gain = gain.times(1e-6)
 	if (inChallenge("c", 22)) gain = gain.pow(0.8)
 	if (inChallenge("c", 31)) gain = gain.pow(0.5)
+	if (inChallenge("c", 31)) gain = gain.pow(0.4)
 	if (inChallenge("c", 41)) gain = gain.pow(0.1)
 	if (inChallenge("c", 42)) gain = gain.pow(0.002)
 	return gain
