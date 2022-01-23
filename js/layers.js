@@ -160,6 +160,7 @@ addLayer("w", {
         if (hasUpgrade('s', 12)) mult = mult.times(upgradeEffect('s', 12))
         if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
+        softcap(10, "e4000", 0.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

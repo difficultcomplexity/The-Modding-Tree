@@ -38,7 +38,7 @@ addLayer("o", {
             cost: new Decimal(4),
             unlocked() { return hasUpgrade("o", 12) },
             effect() {
-                let effect = player.w.points.add(1).pow(0.175)
+                let effect = player.w.points.add(1).pow(0.185)
                 if (inChallenge("c", 22)) effect = new Decimal(10)
                 if (inChallenge("c", 41)) effect = player.w.points.add(1).pow(0.15)
                 return effect
