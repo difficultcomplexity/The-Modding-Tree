@@ -31,7 +31,7 @@ addLayer("w", {
                 if (hasChallenge("c", 12)) effect = player.points.add(1.5).pow(0.19)
                 if (hasUpgrade("u", 15)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
-                if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.01)
+                if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.025)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect

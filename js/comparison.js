@@ -114,7 +114,7 @@ addLayer("c", {
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
             goalDescription: "6e26 Grams",
             rewardDescription: "Singularity has significantly improved formula.",
-            canComplete: function() {return player.points.gte(2e27)},
+            canComplete: function() {return player.points.gte(1e27)},
             unlocked() { return (hasMilestone('c', 3)) },
         },
         22: {
