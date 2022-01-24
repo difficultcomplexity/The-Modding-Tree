@@ -120,6 +120,12 @@ addLayer("a", {
             image: "https://cdn.discordapp.com/attachments/762036407719428099/934723150485262377/Blackholedozenal.png",
             done() { return hasUpgrade("u", 13) }
         },
+        53: {
+            name: "The Backrooms",
+            tooltip: "Time Travel.",
+            image: "https://cdn.discordapp.com/attachments/762036407719428099/935193681013665872/Backrooms.png",
+            done() { return player.tt.points.gte(1) }
+        },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized

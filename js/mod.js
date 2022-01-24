@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.04.5g | Pre-release 2",
-	name: "Type 3 Singularities",
+	num: "0.04.75g",
+	name: "Time Traveller",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
