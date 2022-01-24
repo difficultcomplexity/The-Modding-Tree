@@ -61,7 +61,7 @@ addLayer("s", {
         },
         3: {
             requirementDescription: "Five Nights At Freddy's 3",
-            effectDescription: "Increase comparison gain per second from 0.01% to 1%.",
+            effectDescription: "Increase comparison gain per second from 0.1% to 1%.",
             done() { return player.s.points.gte(8) }
         },
         4: {

@@ -62,7 +62,7 @@ addLayer("o", {
     milestones: {
         1: {
             requirementDescription: "2 Overweights",
-            effectDescription: "You gain 1% of Weight on reset per second.",
+            effectDescription: "You gain 50% of Weight on reset per second.",
             done() { return player.o.points.gte(2) }
         },
         2: {

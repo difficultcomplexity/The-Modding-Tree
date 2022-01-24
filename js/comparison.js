@@ -165,7 +165,7 @@ addLayer("c", {
     },
     passiveGeneration() {
         let gen = new Decimal(0)
-        if (hasMilestone("u", 2)) gen = new Decimal(0.0001)
+        if (hasMilestone("u", 2)) gen = new Decimal(0.001)
         if (hasMilestone("s", 3)) gen = new Decimal(0.01)
         return gen
     },
