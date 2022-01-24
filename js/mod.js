@@ -81,7 +81,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e3003"))
+	return player.tt.points.gte(1)
 }
 
 
