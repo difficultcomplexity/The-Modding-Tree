@@ -3,7 +3,7 @@ let modInfo = {
 	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js", "singularity.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
+	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js", "singularity.js", "timetravel.js", "time.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
     
 	discordName: "",
 	discordLink: "",
