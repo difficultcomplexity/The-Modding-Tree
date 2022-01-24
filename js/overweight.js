@@ -85,6 +85,7 @@ addLayer("o", {
     autoUpgrade() {
         return hasMilestone("u", 1)
     },
+    canBuyMax() {return hasMilestone("c", 6)},
     name: "overweight",
     symbol: "O",
     branches: ["u"],
@@ -102,7 +103,7 @@ addLayer("o", {
     exponent: 1.79,
     gainMult() {
         mult = new Decimal(1)
-        
+        // mult = softcap(mult, 300, 0.8) // Tetra-softcapped Layer 1
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
