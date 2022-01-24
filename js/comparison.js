@@ -50,6 +50,7 @@ addLayer("c", {
             effect() {
                 let effect = Decimal.pow(1.2, player.o.points)
                 if (hasChallenge("c", 11)) effect = Decimal.pow(1.25, player.o.points)
+                if (hasUpgrade("u", 11)) effect = Decimal.pow(1.30, player.o.points)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
