@@ -119,5 +119,5 @@ addLayer("o", {
     hotkeys: [
         {key: "o", description: "O: Reset for Overweights", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return player.o.points.gte(1) || hasUpgrade("o", 11)}
+    layerShown(){return hasUpgrade('w', 15) || hasUpgrade("o", 11)}
 })
