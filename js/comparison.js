@@ -206,5 +206,5 @@ addLayer("c", {
     hotkeys: [
         {key: "c", description: "C: Reset for comparisons", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasUpgrade('o', 21)}
+    layerShown(){return hasUpgrade('o', 21) || player.c.points.gte(1)}
 })

@@ -106,5 +106,5 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "S: Reset for SINGULARITIES", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasMilestone('u', 5)}
+    layerShown(){return hasMilestone('u', 5) || hasUpgrade('s', 11) || player.s.points.gte(1)}
 })

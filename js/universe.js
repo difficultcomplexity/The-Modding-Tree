@@ -117,5 +117,5 @@ addLayer("u", {
     hotkeys: [
         {key: "u", description: "U: Universally reset.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasChallenge('c', 32)}
+    layerShown(){return hasChallenge('c', 32) || player.u.points.gte(1)}
 })
