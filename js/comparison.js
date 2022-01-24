@@ -70,8 +70,8 @@ addLayer("c", {
             description: "Get 1.075x more comparison each overweight.",
             cost: new Decimal(10000),
             effect() {
-                let effect = Decimal.pow(1.075, player.o.points)
-                if (hasUpgrade("c", 14)) effect = Decimal.pow(1.150, player.o.points)
+                let effect = Decimal.pow(1.08, player.o.points)
+                if (hasUpgrade("c", 14)) effect = Decimal.pow(1.155, player.o.points)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
