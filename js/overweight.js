@@ -72,6 +72,11 @@ addLayer("o", {
             toggles: [["w", "auto"]],
         },
         3: {
+            requirementDescription: "6 Overweights",
+            effectDescription: "Recieve Upgrade Certificate LVL 1.",
+            done() { return player.o.points.gte(6) },
+        },
+        4: {
             requirementDescription: "10 Overweights",
             effectDescription: "Keep W Upgrades.",
             done() { return player.o.points.gte(10) }
@@ -107,7 +112,7 @@ addLayer("o", {
     //    var keep = []
     //    if (hasMilestone("u", 1)) keep.push("upgrades")
     //    if (hasMilestone("u", 3)) keep.push("milestones")
-    //    if (player[this.layer].row <= player[resettingLayer].row) return
+    //    if (player[this.layer].row < player[resettingLayer].row) return
     //    layerDataReset(this.layer, keep)
     //},
     row: 1, // Row the layer is in on the tree (0 is the first row)

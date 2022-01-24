@@ -99,7 +99,7 @@ addLayer("s", {
     //doReset(resettingLayer) {
     //    var keep = []
     //    if (hasMilestone("s", 5)) keep.push("upgrades")
-    //    if (player[this.layer].row <= player[resettingLayer].row) return
+    //    if (player[this.layer].row < player[resettingLayer].row) return
     //    layerDataReset(this.layer, keep)
     //},
     row: 1, // Row the layer is in on the tree (0 is the first row)

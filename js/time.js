@@ -24,5 +24,5 @@ addLayer("t", {
     hotkeys: [
         {key: "c", description: "C: Reset for comparisons", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return hasUpgrade("tt", 11)}
 })

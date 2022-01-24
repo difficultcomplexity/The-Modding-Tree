@@ -55,6 +55,7 @@ addLayer("w", {
             cost: new Decimal(50),
             effect() {
                 let effect = Decimal.pow(1.75, player.w.upgrades.length)
+                // if (hasMilestone("o", 3)) effect = Decimal.pow(1.75, player.w.upgrades.length.add((player.o.upgrades.length.times(0.5))))
                 if (inChallenge("c", 32)) effect = Decimal.pow(2.5, player.w.upgrades.length)
                 return effect
             },
@@ -190,11 +191,11 @@ addLayer("w", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    //doReset(resettingLayer) {
+    //    doReset(resettingLayer) {
     //    var keep = []
-    //    if (hasMilestone("o", 3)) keep.push("upgrades")
+    //    if (hasMilestone("o", 4)) keep.push("upgrades")
     //    if (hasMilestone("u", 1)) keep.push("milestones")
-    //    if (layers[this.layer].row <= layers[resettingLayer].row) return
+    //    if (layers[this.layer].row < layers[resettingLayer].row) return
     //    layerDataReset(this.layer, keep)
     //},    
     row: 0, // Row the layer is in on the tree (0 is the first row)
