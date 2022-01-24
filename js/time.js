@@ -22,7 +22,7 @@ addLayer("t", {
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "c", description: "C: Reset for comparisons", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "|", description: "Achievement", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return hasUpgrade("tt", 11) || player.tt.points.gte(1)}
 })
