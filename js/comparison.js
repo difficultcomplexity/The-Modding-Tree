@@ -113,7 +113,7 @@ addLayer("c", {
         21: {
             name: "Moon",
             challengeDescription: "Upgrade O11 and W12 is capped/nerfed and divide gram gain by 1e6.",
-            goalDescription: "6e26 Grams",
+            goalDescription: "1e27 Grams",
             rewardDescription: "Singularity has significantly improved formula.",
             canComplete: function() {return player.points.gte(1e27)},
             unlocked() { return (hasMilestone('c', 3)) },
@@ -121,7 +121,7 @@ addLayer("c", {
         22: {
             name: "Betelgeuse",
             challengeDescription: "Upgrade O11,12,14 is nerfed and reduce gram gain to ^0.8.",
-            goalDescription: "3e31 Grams",
+            goalDescription: "4e31 Grams",
             rewardDescription: "Gorda Echinadna has improved formula.",
             canComplete: function() {return player.points.gte(4e31)},
             unlocked() { return (hasMilestone('c', 4)) },
@@ -129,7 +129,7 @@ addLayer("c", {
         31: {
             name: "Choco Way",
             challengeDescription: "Upgrade W12 is nerfed drastically and reduce gram gain to ^0.75",
-            goalDescription: "1e45 Grams",
+            goalDescription: "2e45 Grams",
             rewardDescription: "Heavier weights has significantly changed formula!",
             canComplete: function() {return player.points.gte(2e45)},
             unlocked() { return (hasMilestone('c', 5)) },
@@ -192,6 +192,7 @@ addLayer("c", {
         if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
         if (hasUpgrade('c', 13)) mult = mult.times(upgradeEffect('c', 13))
         if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
+        if (hasMilestone('t', 3)) mult = mult.times(player.t.points.pow(2.5))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

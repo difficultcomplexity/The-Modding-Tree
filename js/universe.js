@@ -80,6 +80,44 @@ addLayer("u", {
             done() { return player.u.points.gte(1e50) }
         },
     },
+    challenges: {
+        11: {
+            name: "Boundary Breaks",
+            challengeDescription: "Reduce gram gain to ^0.25.",
+            goalDescription: "1e1000 Grams",
+            rewardDescription: "Unlock new Time Machine upgrade!",
+            canComplete: function() {return player.points.gte("e1000")},
+            unlocked() { return (hasMilestone('tt', 1)) },
+            
+        },
+        12: {
+            name: "Black Hole",
+            challengeDescription: "Singularity upgrades do nothing.",
+            goalDescription: "1e6003 Grams",
+            rewardDescription: "Unlock new Time Upgrades!",
+            canComplete: function() {return player.points.gte("e6003")},
+            unlocked() { return (hasMilestone('tt', 1)) },
+            
+        },
+        21: {
+            name: "The Big Bang",
+            challengeDescription: "Reduce weight gain to ^0.1.",
+            goalDescription: "1e2000 Grams",
+            rewardDescription: "Not Implemented",
+            canComplete: function() {return player.points.gte("e2000")},
+            unlocked() { return (hasMilestone('tt', 1)) },
+            
+        },
+        22: {
+            name: "Heat Death",
+            challengeDescription: "Comparison is useless.",
+            goalDescription: "1e50000 Grams",
+            rewardDescription: "Not Implemented",
+            canComplete: function() {return player.points.gte("e50000")},
+            unlocked() { return (hasMilestone('tt', 1)) },
+            
+        },
+    },
     autoUpgrade() {
         return hasMilestone("s", 1)
     },

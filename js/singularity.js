@@ -82,6 +82,7 @@ addLayer("s", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    canBuyMax() {return hasMilestone("tt", 2)},
     color: "#101010",
     requires: new Decimal("e308"), // Can be a function that takes requirement increases into account
     resource: "singularities", // Name of prestige currency

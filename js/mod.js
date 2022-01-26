@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.04.75g",
-	name: "Time Traveller",
+	num: "0.04.8g",
+	name: "Time Creator",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -60,6 +60,7 @@ function getPointGen() {
 	if (hasUpgrade('u', 12)) gain = gain.times(upgradeEffect('u', 12))
 	if (hasUpgrade('u', 13)) gain = gain.times(upgradeEffect('u', 13))
 	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
+	if (hasMilestone('t', 1)) gain = gain.times(player.t.points.pow(7))
 	if (inChallenge("c", 11)) gain = gain.pow(0.5)
 	if (inChallenge("c", 12)) gain = gain.pow(0.75)
 	if (inChallenge("c", 21)) gain = gain.times(1e-6)

@@ -183,6 +183,7 @@ addLayer("w", {
         if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
         if (hasUpgrade('s', 12)) mult = mult.times(upgradeEffect('s', 12))
         if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
+        if (hasMilestone('t', 2)) mult = mult.times(player.t.points.pow(4))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
         mult = softcap(mult, new Decimal("e4000"), 0.25) // Tetra-softcapped Layer 1
         mult = softcap(mult, new Decimal("e1e300"), 0.1) // Tetra-softcapped Layer 2

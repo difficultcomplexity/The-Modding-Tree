@@ -126,6 +126,18 @@ addLayer("a", {
             image: "https://cdn.discordapp.com/attachments/762036407719428099/935193681013665872/Backrooms.png",
             done() { return player.tt.points.gte(1) }
         },
+        54: {
+            name: "The Short Break",
+            tooltip: "Get 300 seconds, worth a short break.",
+            image: "",
+            done() { return player.t.points.gte(300) }
+        },
+        55: {
+            name: "No...",
+            tooltip: "Get 3600 seconds, worth 1 cycle of school.",
+            image: "",
+            done() { return player.t.points.gte(3600) }
+        },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
