@@ -3,14 +3,13 @@ let modInfo = {
 	id: "weightful",
 	author: "DifficultComplexity",
 	pointsName: "g",
-	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js", "singularity.js", "timetravel.js", "time.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
+	modFiles: ["layers.js", "tree.js", "overweight.js", "comparison.js", "achievement.js", "universe.js", "singularity.js", "timetravel.js", "time.js", "space.js", "obesity.js"], // IMPORTANT: ADD THE FILES HERE TO BE MENTIONED!
     
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new Decimal (10), // Used for hard resets and new players
-	offlineLimit: 1,  // In hours
+	offlineLimit: 24,  // In hours
 }
-
 // Set your version in num and name
 let VERSION = {
 	num: "0.04.8g",
@@ -60,7 +59,12 @@ function getPointGen() {
 	if (hasUpgrade('u', 12)) gain = gain.times(upgradeEffect('u', 12))
 	if (hasUpgrade('u', 13)) gain = gain.times(upgradeEffect('u', 13))
 	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
+	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
 	if (hasMilestone('t', 1)) gain = gain.times(player.t.points.pow(7))
+	if (hasUpgrade("t", 21)) gain = gain.pow(player.tt.points.add(100).div(100))
+	if (hasUpgrade("sa", 13)) gain = gain.times(upgradeEffect('sa', 13))
+	if (hasUpgrade('o', 22)) gain = gain.pow(player.o.points.div(9900).add(1))
+	if (hasUpgrade('w', 33)) gain = gain.pow(upgradeEffect('w', 33))
 	if (inChallenge("c", 11)) gain = gain.pow(0.5)
 	if (inChallenge("c", 12)) gain = gain.pow(0.75)
 	if (inChallenge("c", 21)) gain = gain.times(1e-6)
@@ -68,7 +72,9 @@ function getPointGen() {
 	if (inChallenge("c", 31)) gain = gain.pow(0.75)
 	if (inChallenge("c", 32)) gain = gain.pow(0.75)
 	if (inChallenge("c", 41)) gain = gain.pow(0.075)
-	if (inChallenge("c", 42)) gain = gain.pow(0.002)
+	if (inChallenge("c", 42)) gain = gain.pow(0.0001)
+	if (inChallenge("u", 11)) gain = gain.pow(0.4065)
+	
 	return gain
 }
 
@@ -82,7 +88,8 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.tt.points.gte(1)
+	return player.t.points.gte(300)
+	// player.li.points.gte(7.6e9)
 }
 
 

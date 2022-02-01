@@ -21,7 +21,7 @@ addLayer("o", {
             unlocked() { return hasUpgrade("o", 11) },
             
             effect() {
-                let effect = new Decimal(3).pow(player.o.points)
+                let effect = new Decimal(3).pow(player.o.points).add(1)
                 if (hasChallenge("c", 41)) effect = new Decimal(4).pow(player.o.points)
                 if (inChallenge("c", 22)) effect = new Decimal(32)
                 return effect
@@ -57,7 +57,31 @@ addLayer("o", {
             description: "Unlock Comparison Layer.",
             cost: new Decimal(10),
             unlocked() { return hasUpgrade("o", 15) },
-        }
+        },
+        22: {
+            title: "Obesity",
+            description: "Increase power of grams by ^.0001",
+            cost: new Decimal(380),
+            unlocked() { return hasUpgrade("sa", 14) },
+        },
+        23: {
+            title: "Overweightly Harsh",
+            description: "Increase power of weights by ^.002",
+            cost: new Decimal(630),
+            unlocked() { return hasUpgrade("o", 22) },
+        },
+        24: {
+            title: "Compare Base",
+            description: "Increase power of comparisons by ^.002",
+            cost: new Decimal(720),
+            unlocked() { return hasUpgrade("o", 23) },
+        },
+        25: {
+            title: "Universal Base",
+            description: "Increase power of universes by ^.002",
+            cost: new Decimal(723),
+            unlocked() { return hasUpgrade("o", 24) },
+        },
     },
     milestones: {
         1: {
@@ -88,7 +112,7 @@ addLayer("o", {
     canBuyMax() {return hasMilestone("c", 6)},
     name: "overweight",
     symbol: "O",
-    branches: ["u"],
+    branches: ["u", "ob"],
     position: 3,
     startData() { return {
         unlocked: false,

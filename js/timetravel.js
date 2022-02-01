@@ -5,6 +5,16 @@ addLayer("tt", {
             description: "Begin producing seconds.",
             cost: new Decimal(1),
         },
+        12: {
+            title: "Random Upgrades",
+            description: "Square the effect of time machine effect.",
+            cost: new Decimal(2),
+        },
+        13: {
+            title: "Time Attracting",
+            description: "Increase the effect, again depending on (sqrt(Time Machines+1)).",
+            cost: new Decimal(2),
+        },
     },
     milestones: {
         1: {
@@ -45,6 +55,7 @@ addLayer("tt", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    canBuyMax() {return hasMilestone("u", 7)},
     color: "#DDDDDD",
     requires: new Decimal("e16384"), // Can be a function that takes requirement increases into account
     resource: "time machines", // Name of prestige currency

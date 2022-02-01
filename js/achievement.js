@@ -71,8 +71,8 @@ addLayer("a", {
         },
         34: {
             name: "Kirby, NO!!!",
-            tooltip: "Get 1 Mountain worth of grams in the Shattered Challenge.",
-            done() { return player.points.gte(1e15) }
+            tooltip: "Get 1 Tonne worth of grams in the Shattered Challenge.",
+            done() { return player.points.gte(1e6) && inChallenge('c', 41) }
         },
         35: {
             name: "The Universe.",
@@ -138,6 +138,66 @@ addLayer("a", {
             image: "",
             done() { return player.t.points.gte(3600) }
         },
+        61: {
+            name: "6 AM FNAF Luck",
+            tooltip: "Get 5 days.",
+            image: "",
+            done() { return player.t.points.gte(432000) }
+        },
+        62: {
+            name: "The Earth's Ring",
+            tooltip: "Get 1 year.",
+            image: "",
+            done() { return player.t.points.gte(31536000) }
+        },
+        63: {
+            name: "Year 3000",
+            tooltip: "Get 1 millenium.",
+            image: "",
+            done() { return player.t.points.gte(31536000000) }
+        },
+        64: {
+            name: "Extinction",
+            tooltip: "Get 1 megannum.",
+            image: "",
+            done() { return player.t.points.gte(3.1536e13) }
+        },
+        65: {
+            name: "Epoch",
+            tooltip: "Get 650 megannum.",
+            image: "",
+            done() { return player.t.points.gte(1.75e16) }
+        },
+        71: {
+            name: "Space-Time",
+            tooltip: "Get a space.",
+            image: "",
+            done() { return player.sa.points.gte(1) }
+        },
+        72: {
+            name: "FNAF Pizzeria",
+            tooltip: "Get amount of space same as the FNAF 1 pizzeria.",
+            image: "https://cdn.discordapp.com/attachments/896797214981095525/938016739701190686/fnaf.jpg",
+            done() { return player.sa.points.gte(34000) }
+        },
+        73: {
+            name: "Anarchac- teria",
+            tooltip: "Get e37,446 grams",
+            image: "",
+            done() { return player.points.gte("e37446") }
+        },
+        74: {
+            name: "Myrillion",
+            tooltip: "Get e30,003 weights",
+            image: "",
+            done() { return player.w.points.gte("e30003") }
+        },
+        75: {
+            name: "Obese",
+            tooltip: "Get obesed.",
+            image: "",
+            done() { return player.ob.points.gte(1) }
+        },
     },
     name: "achievement", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -161,8 +221,5 @@ addLayer("a", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "a", description: "Achievement", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 })

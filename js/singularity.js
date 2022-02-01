@@ -6,7 +6,9 @@ addLayer("s", {
             description: "Singularities boost Grams gain by ((singularity)^40)x.",
             cost: new Decimal(3),
             effect() {
-                return player.s.points.add(1).mul(1).pow(40)
+                let effect = player.s.points.add(1).mul(1).pow(40)
+                if (inChallenge('u', 12)) effect = new Decimal(1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -15,7 +17,9 @@ addLayer("s", {
             description: "Singularities boost Weights gain by ((singularity)^15)x.",
             cost: new Decimal(5),
             effect() {
-                return player.s.points.add(1).mul(1).pow(15)
+                let effect = player.s.points.add(1).mul(1).pow(15)
+                if (inChallenge('u', 12)) effect = new Decimal(1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -24,7 +28,9 @@ addLayer("s", {
             description: "Singularities boost Comparisons gain by ((singularity)^8)x.",
             cost: new Decimal(6),
             effect() {
-                return player.s.points.add(1).mul(1).pow(8)
+                let effect = player.s.points.add(1).mul(1).pow(8)
+                if (inChallenge('u', 12)) effect = new Decimal(1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -33,7 +39,9 @@ addLayer("s", {
             description: "Singularities boost Universes gain by ((singularity)^4)x.",
             cost: new Decimal(8),
             effect() {
-                return player.s.points.add(1).mul(1).pow(4)
+                let effect = player.s.points.add(1).mul(1).pow(4)
+                if (inChallenge('u', 12)) effect = new Decimal(1)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -42,7 +50,10 @@ addLayer("s", {
             description: "Singularities boost Grams gain by a lot.",
             cost: new Decimal(11),
             effect() {
-                return player.s.points.add(0.1).mul(player.u.points.pow(0.1)).pow(player.s.points)
+                let effect = player.s.points.add(0.1).mul(player.u.points.pow(0.1)).pow(player.s.points)
+                if (inChallenge('u', 12)) effect = new Decimal(1)
+                if (inChallenge('u', 21)) effect = player.s.points.add(0.1).mul(player.u.points.pow(0.1)).pow(player.tt.points)
+                return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -75,6 +86,7 @@ addLayer("s", {
             done() { return player.s.points.gte(16) }
         },
     },
+    
     name: "singularity", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "SL", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order

@@ -193,6 +193,8 @@ addLayer("c", {
         if (hasUpgrade('c', 13)) mult = mult.times(upgradeEffect('c', 13))
         if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
         if (hasMilestone('t', 3)) mult = mult.times(player.t.points.pow(2.5))
+        if (hasUpgrade('o', 24)) mult = mult.pow(player.o.points.add(1).log(1.009).div(510).add(1)).log(1.025)
+        mult = softcap(mult, new Decimal("e30000"), 0.15) // Tetra-softcapped Layer 1
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

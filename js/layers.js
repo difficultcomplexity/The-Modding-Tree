@@ -17,6 +17,8 @@ addLayer("w", {
                 if (inChallenge("c", 21)) effect = player.points.add(1).pow(0.25)
                 if (inChallenge("c", 31)) effect = player.points.add(1).pow(0.225)
                 if (inChallenge("c", 41)) effect = player.points.add(1).pow(0.2)
+                if (inChallenge("u", 21)) effect = new Decimal(1)
+                effect = softcap(effect, new Decimal("e5000"), 0.4) // Tetra-softcapped Layer 1
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -32,6 +34,8 @@ addLayer("w", {
                 if (hasUpgrade("u", 15)) effect = player.points.add(1.5).pow(0.2)
                 if (inChallenge("c", 12)) effect = player.points.add(1.1).pow(0.12)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.025)
+                if (inChallenge("u", 21)) effect = new Decimal(1)
+                effect = softcap(effect, new Decimal("e4000"), 0.4) // Tetra-softcapped Layer 1
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -45,6 +49,8 @@ addLayer("w", {
                 let effect = player.points.add(1.05).pow(0.175)
                 if (inChallenge("c", 12)) effect = new Decimal(10)
                 if (inChallenge("c", 32)) effect = player.points.add(1).pow(0.15)
+                if (inChallenge("u", 21)) effect = new Decimal(1)
+                effect = softcap(effect, new Decimal("e5000"), 0.4) // Tetra-softcapped Layer 1
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -70,6 +76,8 @@ addLayer("w", {
                 let effect = player.points.add(1).pow(0.045)
                 if (hasChallenge("c", 21)) effect = player.points.add(1.5).pow(0.0475)
                 if (hasUpgrade("u", 15)) effect = player.points.add(1.5).pow(0.05)
+                if (inChallenge("u", 21)) effect = player.points.add(1.5).pow(0.005)
+                effect = softcap(effect, new Decimal("e800"), 0.5) // Tetra-softcapped Layer 1
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -116,6 +124,7 @@ addLayer("w", {
                 let effect = player.c.points.add(1).pow(0.145)
                 if (hasChallenge("c", 11)) effect = player.points.add(1.25).pow(0.15)
                 if (inChallenge("c", 41)) effect = player.c.points.add(1).pow(0.1)
+                if (inChallenge("u", 21)) effect = player.c.points.add(1).pow(0.01)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
@@ -127,6 +136,7 @@ addLayer("w", {
             unlocked() { return hasMilestone("u", 3) },
             effect() {
                 let effect = player.u.points.add(1).pow(0.225)
+                if (inChallenge("u", 21)) effect = player.u.points.add(1).pow(0.01)
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
@@ -140,6 +150,18 @@ addLayer("w", {
                 return player.u.points.add(1.0).pow(0.9)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        33: {
+            title: "Overweightful Weights",
+            description: "Scale up gram base.",
+            cost: new Decimal("e50000"),
+            unlocked() { return hasMilestone("u", 3) },
+            effect() {
+                let effect = player.o.points.add(1).log(1.2).add(1).pow(0.025).pow(player.ob.points)
+                
+                return effect
+            },
+            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
     milestones: {
@@ -185,8 +207,11 @@ addLayer("w", {
         if (hasUpgrade('s', 15)) mult = mult.times(upgradeEffect('s', 15))
         if (hasMilestone('t', 2)) mult = mult.times(player.t.points.pow(4))
         if (hasAchievement('o', 24)) mult = mult.times(achievementEffect('o', 24))
+        if (hasUpgrade('o', 23)) mult = mult.pow(player.o.points.add(1).log(1.01).div(495).add(1))
+        if (hasUpgrade('ob', 12)) mult = mult.pow(player.ob.points.add(1).pow(1.75).log(1.05).div(1000).add(1))
+        if (inChallenge("u", 12)) mult = mult.pow(0.5)
         mult = softcap(mult, new Decimal("e4000"), 0.25) // Tetra-softcapped Layer 1
-        mult = softcap(mult, new Decimal("e1e300"), 0.1) // Tetra-softcapped Layer 2
+        mult = softcap(mult, new Decimal("e100000"), 0.1) // Tetra-softcapped Layer 2
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses

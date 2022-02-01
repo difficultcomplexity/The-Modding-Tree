@@ -45,6 +45,30 @@ addLayer("u", {
             cost: new Decimal("e603"),
             unlocked() { return (hasUpgrade('u', 14)) },
         },
+        21: {
+            title: "Caramella Girls",
+            description: "Indefenitely placeholder.",
+            cost: new Decimal("e1e12"),
+            unlocked() { return (hasUpgrade('u', 11)) },
+        },
+        22: {
+            title: "Rebounce",
+            description: "Indefenitely placeholder.",
+            cost: new Decimal("eee100"),
+            unlocked() { return (hasUpgrade('u', 11)) },
+        },
+        23: {
+            title: "Real Life",
+            description: "Indefenitely placeholder.",
+            cost: new Decimal("eeeee100"),
+            unlocked() { return (hasUpgrade('u', 11)) },
+        },
+        24: {
+            title: "Hyperexponent",
+            description: "Indefenitely placeholder.",
+            cost: new Decimal("eeeeeeeeee10"),
+            unlocked() { return (hasUpgrade('u', 11)) },
+        },
     },
     milestones: {
         1: {
@@ -79,11 +103,17 @@ addLayer("u", {
             effectDescription: "Universe does not reset Sigularities AND its upgrades.",
             done() { return player.u.points.gte(1e50) }
         },
+        7: {
+            requirementDescription: "1e1000 Universes",
+            effectDescription: "Time Machines are bulk maximized.",
+            done() { return player.u.points.gte('e1000') },
+            unlocked() { return player.u.points.gte('e900')}
+        },
     },
     challenges: {
         11: {
             name: "Boundary Breaks",
-            challengeDescription: "Reduce gram gain to ^0.25.",
+            challengeDescription: "Reduce gram gain to ^0.4.",
             goalDescription: "1e1000 Grams",
             rewardDescription: "Unlock new Time Machine upgrade!",
             canComplete: function() {return player.points.gte("e1000")},
@@ -92,19 +122,19 @@ addLayer("u", {
         },
         12: {
             name: "Black Hole",
-            challengeDescription: "Singularity upgrades do nothing.",
-            goalDescription: "1e6003 Grams",
+            challengeDescription: "Singularity upgrades do nothing, and weight is reducted.",
+            goalDescription: "1e23400 Grams",
             rewardDescription: "Unlock new Time Upgrades!",
-            canComplete: function() {return player.points.gte("e6003")},
+            canComplete: function() {return player.points.gte("e23400")},
             unlocked() { return (hasMilestone('tt', 1)) },
             
         },
         21: {
             name: "The Big Bang",
-            challengeDescription: "Reduce weight gain to ^0.1.",
-            goalDescription: "1e2000 Grams",
+            challengeDescription: "Many 'get more X based on Y' upgrades are NERFED DRASTICALLY.",
+            goalDescription: "1e3140 Grams",
             rewardDescription: "Not Implemented",
-            canComplete: function() {return player.points.gte("e2000")},
+            canComplete: function() {return player.points.gte("e3140")},
             unlocked() { return (hasMilestone('tt', 1)) },
             
         },
@@ -145,6 +175,7 @@ addLayer("u", {
         mult = new Decimal(1)
         if (hasUpgrade('c', 15)) mult = mult.times(upgradeEffect('c', 15))
         if (hasUpgrade('s', 14)) mult = mult.times(upgradeEffect('s', 14))
+        if (hasUpgrade('o', 25)) mult = mult.pow(player.o.points.add(1).log(1.009).div(500).add(1)).log(1.00001).pow(player.tt.points)
         mult = softcap(mult, new Decimal("e303"), 0.16) // Tetra-softcapped Layer 1
         return mult
     },
