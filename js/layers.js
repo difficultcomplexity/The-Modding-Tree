@@ -154,7 +154,7 @@ addLayer("w", {
         33: {
             title: "Overweightful Weights",
             description: "Scale up gram base.",
-            cost: new Decimal("e50000"),
+            cost: new Decimal("e41925"),
             unlocked() { return hasMilestone("u", 3) },
             effect() {
                 let effect = player.o.points.add(1).log(1.2).add(1).pow(0.025).pow(player.ob.points)

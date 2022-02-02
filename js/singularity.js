@@ -67,7 +67,7 @@ addLayer("s", {
         },
         2: {
             requirementDescription: "Five Nights At Freddy's 2",
-            effectDescription: "Unknown, give me ideas.",
+            effectDescription: "",
             done() { return player.s.points.gte(5) },
         },
         3: {
@@ -79,11 +79,6 @@ addLayer("s", {
             requirementDescription: "Five Nights At Freddy's 4",
             effectDescription: "Get 1% Universe Points per second.",
             done() { return player.s.points.gte(12) }
-        },
-        5: {
-            requirementDescription: "Five Nights At Freddy's 5",
-            effectDescription: "Keep S upgrades.",
-            done() { return player.s.points.gte(16) }
         },
     },
     

@@ -85,7 +85,7 @@ addLayer("u", {
         },
         3: {
             requirementDescription: "500 Universes",
-            effectDescription: "Unlock new Upgrades and keep O milestones.",
+            effectDescription: "Unlock new Upgrades.",
             done() { return player.u.points.gte(500) }
         },
         4: {
@@ -100,7 +100,7 @@ addLayer("u", {
         },
         6: {
             requirementDescription: "1e50 Universes",
-            effectDescription: "Universe does not reset Sigularities AND its upgrades.",
+            effectDescription: "Universe",
             done() { return player.u.points.gte(1e50) }
         },
         7: {

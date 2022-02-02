@@ -67,19 +67,19 @@ addLayer("o", {
         23: {
             title: "Overweightly Harsh",
             description: "Increase power of weights by ^.002",
-            cost: new Decimal(630),
+            cost: new Decimal(680),
             unlocked() { return hasUpgrade("o", 22) },
         },
         24: {
             title: "Compare Base",
             description: "Increase power of comparisons by ^.002",
-            cost: new Decimal(720),
+            cost: new Decimal(730),
             unlocked() { return hasUpgrade("o", 23) },
         },
         25: {
             title: "Universal Base",
             description: "Increase power of universes by ^.002",
-            cost: new Decimal(723),
+            cost: new Decimal(780),
             unlocked() { return hasUpgrade("o", 24) },
         },
     },
@@ -95,16 +95,6 @@ addLayer("o", {
             done() { return player.o.points.gte(4) },
             toggles: [["w", "auto"]],
         },
-        3: {
-            requirementDescription: "6 Overweights",
-            effectDescription: "Recieve Upgrade Certificate LVL 1.",
-            done() { return player.o.points.gte(6) },
-        },
-        4: {
-            requirementDescription: "10 Overweights",
-            effectDescription: "Keep W Upgrades.",
-            done() { return player.o.points.gte(10) }
-        }
     },
     autoUpgrade() {
         return hasMilestone("u", 1)
