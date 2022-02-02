@@ -51,7 +51,7 @@ addLayer("t", {
             description: "Time is accelerated.",
             cost: new Decimal(1e6),
             effect() {
-                let effect = new Decimal(1).mul(player.t.points.pow(0.085))
+                let effect = new Decimal(1).mul(player.t.points.pow(0.1))
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
