@@ -61,7 +61,7 @@ function getPointGen() {
 	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
 	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
 	if (hasMilestone('t', 1)) gain = gain.times(player.t.points.pow(7))
-	if (hasUpgrade("t", 21)) gain = gain.pow(player.tt.points.add(100).div(100))
+	if (hasUpgrade("t", 21)) gain = gain.pow(player.tt.points.add(50).div(50))
 	if (hasUpgrade("sa", 13)) gain = gain.times(upgradeEffect('sa', 13))
 	if (hasUpgrade('o', 22)) gain = gain.pow(player.o.points.div(9900).add(1))
 	if (hasUpgrade('w', 33)) gain = gain.pow(upgradeEffect('w', 33))

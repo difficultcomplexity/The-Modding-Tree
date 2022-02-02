@@ -49,9 +49,9 @@ addLayer("t", {
         22: {
             title: "Security Breach",
             description: "Time is accelerated.",
-            cost: new Decimal(16777216),
+            cost: new Decimal(1e6),
             effect() {
-                let effect = new Decimal(1).mul(player.t.points.pow(0.065))
+                let effect = new Decimal(1).mul(player.t.points.pow(0.085))
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -59,9 +59,9 @@ addLayer("t", {
         23: {
             title: "NXT-Destructable",
             description: "Time is accelerated based on grams...",
-            cost: new Decimal(33333333333),
+            cost: new Decimal(1e7),
             effect() {
-                let effect = (player.t.points.log(2).log(1.4).pow(0.75))
+                let effect = (player.t.points.log(1.7).log(1.4).pow(0.75))
                 return effect
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
